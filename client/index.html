@@ -20,7 +20,7 @@
             <div id="tabs" class="navbar-nav ml-md-auto mr-md-auto" ng-include="nbCtrl.navbarService.tabs">
                 <!-- tabs -->
             </div>
-            <div class="mr-3">
+            <div ng-class="nbCtrl.navbarService.dateTimeClass">
                 <span ng-bind="nbCtrl.currentDateTime"></span>
             </div>
             <ul id="icons" class="navbar-nav" ng-include="nbCtrl.navbarService.icons">
