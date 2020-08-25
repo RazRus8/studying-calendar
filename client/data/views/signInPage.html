@@ -1,5 +1,5 @@
 <div id="signIn" class="card mx-auto" style="width: 400px;" ng-controller="signInController as siCtrl">
-    <div class="card-body">
+    <form class="card-body">
         <div class="card-title text-center mb-3">
             <span id="title">
                 Sign in
@@ -18,5 +18,5 @@
             <input type="password" class="form-control" ng-model="siCtrl.password">
         </div>
         <button type="submit" class="btn btn-primary mt-2" ng-click="siCtrl.signIn()">Sign in</button>
-    </div>
+    </form>
 </div>

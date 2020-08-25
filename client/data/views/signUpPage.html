@@ -1,5 +1,5 @@
 <div id="signUp" class="card mx-auto" style="width: 400px;" ng-controller="signUpController as suCtrl">
-    <div class="card-body">
+    <form class="card-body">
         <div class="card-title text-center mb-3">
             <span id="title">
                 Sign up
@@ -35,5 +35,5 @@
             <input type="password" class="form-control" ng-model="suCtrl.password">
         </div>
         <button type="submit" class="btn btn-primary mt-2" ng-click="suCtrl.signUp()">Create account</button>
-    </div>
+    </form>
 </div>
