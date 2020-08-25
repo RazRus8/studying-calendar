@@ -7,7 +7,7 @@
         console.log("manager page controller is working");
 
         // enable icons in navbar
-        navbarService.setIcons("/data/views/icons/icons-enabled.html");
+        navbarService.setIcons("/data/views/icons/icons.html");
 
         // disable tabs in navbar
         navbarService.setTabs("/data/views/tabs/managerTabs.html");
