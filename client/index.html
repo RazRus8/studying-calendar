@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="scheduleApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/ico" href="/data/style/icon.ico">
+        
+        <!-- Bootstrap css -->
+        <link rel="stylesheet" href="/data/externalLinks/bootstrap-4.5.2/css/bootstrap.min.css">
+        
+        <!-- Custom css -->
+        <link rel="stylesheet" href="/data/style/style.css">
+        <link rel="stylesheet" href="/data/style/calendar.css">
+    </head>
+    <body>
+        <header id="navbar" class="navbar navbar-expand flex-column flex-md-row" ng-controller="navbarController as nbCtrl">
+            <div id="main-title">
+                <h3>Studying schedule</h3>
+            </div>
+            <div id="tabs" class="navbar-nav ml-md-auto mr-md-auto" ng-include="nbCtrl.navbarService.tabs">
+                <!-- tabs -->
+            </div>
+            <div class="mr-3">
+                <span ng-bind="nbCtrl.currentDateTime"></span>
+            </div>
+            <ul id="icons" class="navbar-nav" ng-include="nbCtrl.navbarService.icons">
+                <!-- icons -->
+            </ul>
+        </header>
+        <section class="mt-5 mb-5" ng-view>
+            <!-- A place of changing -->
+        </section>
+        <footer>
+            <div class="text-center mt-5 mb-3">
+                &copy; Copyright Ruslan Razuvailo 2020
+            </div>
+        </footer>
+
+        <!-- JQuery js -->
+        <script src="/data/externalLinks/jQuery-3.5.1/jQuery-v3.5.1.js" type="text/javascript"></script>
+        
+        <!-- Bootstrap js -->
+        <script src="/data/externalLinks/bootstrap-4.5.2/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/data/externalLinks/bootstrap-4.5.2/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        
+        <!-- AngularJS js -->
+        <script src="/data/externalLinks/angularJS-1.8.0/angular.min.js" type="text/javascript"></script>
+        <script src="/data/externalLinks/angularJS-1.8.0/angular-route.min.js" type="text/javascript"></script>
+
+        <!-- Module registration js -->
+        <script src="/data/scripts/moduleRegistration.js" type="text/javascript"></script>
+
+        <!-- Routes js -->
+        <script src="/data/scripts/routing.js" type="text/javascript"></script>
+
+        <!-- Controllers js -->
+        <script src="/data/scripts/controllers/navbarController.js" type="text/javascript"></script>
+        <script src="/data/scripts/controllers/signInController.js" type="text/javascript"></script>
+        <script src="/data/scripts/controllers/signUpController.js" type="text/javascript"></script>
+        <script src="/data/scripts/controllers/managerController.js" type="text/javascript"></script>
+
+        <!-- Services js -->
+        <script src="/data/scripts/services/dateTimeService.js" type="text/javascript"></script>
+        <script src="/data/scripts/services/navbarService.js" type="text/javascript"></script>
+        <script src="/data/scripts/services/signInService.js" type="text/javascript"></script>
+        <script src="/data/scripts/services/signUpService.js" type="text/javascript"></script>
+        <script src="/data/scripts/services/managerService.js" type="text/javascript"></script>
+
+        <!-- Directives js -->
+        <script src="/data/scripts/directives/managerDirective.js" type="text/javascript"></script>
+    </body>
+</html>

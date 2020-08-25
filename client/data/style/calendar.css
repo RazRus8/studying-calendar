@@ -1,0 +1,83 @@
+/* disable left and right margin for element with class name .row */
+.row.manager
+{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.row.manager .col
+{
+    padding: 0;
+}
+
+.col.card .calendar .card-body
+{
+    padding: 0;
+}
+
+.calendar
+{
+    width: 100%;
+    /* background-color: rgb(129, 207, 168); */
+}
+
+.month
+{
+    /* background-color: rgb(196, 78, 98); */
+    height: 7em;
+}
+
+/* set pointer for month buttons */
+.prev:hover,
+.next:hover
+{
+    cursor: pointer;
+}
+
+.weekdays div
+{
+    margin: 2%;
+    font-size: 1.4em;
+    width: calc(85% / 7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.days div
+{
+    margin: 1%;
+    font-size: 1.3em;
+    width: calc(85% / 7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+    border-radius: 0.25rem;
+}
+
+/* set animation for hover elements */
+/* .days div:hover:not(.active-date) */
+.days .cur-date:hover
+{
+    background-color: #007bff;
+    border: 0.2rem solid #007bff;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+/* change color for days out of current month */
+.prev-date,
+.next-date
+{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+/* change color for selected elements */
+.active-date
+{
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+}

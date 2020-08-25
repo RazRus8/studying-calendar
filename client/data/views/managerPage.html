@@ -1,0 +1,48 @@
+<div class="container" ng-controller="managerController as manCtrl">
+    <div class="row manager">
+        <div class="col">
+            <div class="container">
+                <div class="form-group">
+                    <label>Group</label>
+                    <select class="form-control" ng-model="">
+                        <option value="">Choose group</option>
+                    </select>
+                    <label>Lecture</label>
+                    <select class="form-control" ng-model="">
+                        <option value="">Choose lecture</option>
+                    </select>
+                    <label>Lecturer</label>
+                    <select class="form-control" ng-model="">
+                        <option value="">Choose lecturer</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col card">
+            <div class="calendar">
+                <div class="month d-flex align-items-center justify-content-between card-header">
+                    <a class="prev pl-4" ng-click="prev()">
+                        <img src="./data/externalLinks/bootstrap-icons-1.0.0-alpha5/caret-left.svg" alt="" width="30em" height="30em">
+                    </a>
+                    <div class="date">
+                        <h2 ng-bind="month"></h2>
+                    </div>
+                    <a class="next pr-4" ng-click="next()">
+                        <img src="./data/externalLinks/bootstrap-icons-1.0.0-alpha5/caret-right.svg" alt="" width="30em" height="30em"> 
+                    </a>
+                </div>
+                <div class="weekdays d-flex align-items-center justify-content-center card-body">
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                    <div>San</div>
+                </div>
+                <div class="days d-flex flex-wrap align-items-center justify-content-center" manager-directive>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
