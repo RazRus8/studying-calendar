@@ -13,6 +13,9 @@
         // disable tabs in navbar
         navbarService.setTabs("");
 
+        // set class for position of datetime in navbar
+        navbarService.setClass("mr-3 ml-auto");
+
         // select initialization
         this.data = 
         {
