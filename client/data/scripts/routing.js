@@ -17,14 +17,42 @@
             templateUrl: "data/views/signUpPage.html"
         });
 
-        // home page route
+        // manager routes
         $routeProvider.when("/home/manager",
         {
-            templateUrl: "data/views/managerPage.html"
+            templateUrl: "data/views/manager/managerHomePage.html"
         });
 
-        // to do:
-        // add student page with student id
-        // add lecturer page with lecturer id
+        $routeProvider.when("/home/manager/students",
+        {
+            templateUrl: "data/views/manager/managerStudentsPage.html"
+        });
+
+        $routeProvider.when("/home/manager/settings",
+        {
+            templateUrl: "data/views/manager/managerSettingsPage.html"
+        });
+
+        // students routes
+        $routeProvider.when("/home/student/:id",
+        {
+            templateUrl: "data/views/student/studentHomePage.html"
+        });
+
+        $routeProvider.when("/home/student/:id/settings",
+        {
+            templateUrl: "data/views/student/studentSettingsPage.html"
+        });
+
+        // lecturer routes
+        $routeProvider.when("/home/lecturer/:id",
+        {
+            templateUrl: "data/views/lecturer/lecturerHomePage.html"
+        });
+
+        $routeProvider.when("/home/lecturer/:id/settings",
+        {
+            templateUrl: "data/views/lecturer/"
+        });
     });
 }());
