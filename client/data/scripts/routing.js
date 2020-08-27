@@ -52,7 +52,7 @@
 
         $routeProvider.when("/home/lecturer/:id/settings",
         {
-            templateUrl: "data/views/lecturer/"
+            templateUrl: "data/views/lecturer/lecturerSettingsPage.html"
         });
     });
 }());
