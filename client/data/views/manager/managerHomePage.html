@@ -24,13 +24,15 @@
                     <label>Time</label>
                     <div class="form-row" style="margin-left: 0; margin-right: 0;">
                         <div class="col mr-3">
-                            <select class="form-control">
+                            <select class="form-control" ng-model="manCtrl.time.initH">
                                 <option value="">Hours</option>
+                                <option ng-repeat="hour in manCtrl.time.hours" value="{{hour.key}}">{{hour.value}}</option>
                             </select>
                         </div>
                         <div class="col mr-3">
-                            <select class="form-control">
+                            <select class="form-control" ng-model="manCtrl.time.initM">
                                 <option value="">Minutes</option>
+                                <option ng-repeat="minute in manCtrl.time.minutes" value="{{minute.key}}">{{minute.value}}</option>
                             </select>
                         </div>
                         <div class="col">

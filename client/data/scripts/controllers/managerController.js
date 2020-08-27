@@ -2,7 +2,7 @@
 {
     "use strict";
 
-    app.controller("managerController", function(navbarService)
+    app.controller("managerController", function(navbarService, managerSelectService)
     {
         console.log("manager page controller is working");
 
@@ -15,6 +15,6 @@
         // set class for position of datetime in navbar
         navbarService.setClass("mr-3");
 
-        // to do
+        this.time = managerSelectService.setTime();
     });
 }());
