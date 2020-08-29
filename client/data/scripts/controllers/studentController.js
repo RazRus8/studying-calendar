@@ -2,7 +2,7 @@
 {
     "use strict";
 
-    app.controller("studentController", function(navbarService)
+    app.controller("studentController", function(navbarService, userService)
     {
         console.log("student page controller is working");
 
@@ -14,5 +14,7 @@
 
         // set class for position of datetime in navbar
         navbarService.setClass("mr-3");
+
+        this.student = "Hello, " + userService.getUser();
     });
 }());
