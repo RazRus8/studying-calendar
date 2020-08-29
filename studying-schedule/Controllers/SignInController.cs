@@ -35,11 +35,16 @@ namespace studying_schedule.Controllers
                         StatusCode = (int)HttpStatusCode.OK
                     };
                 }
+
+                return new ContentResult
+                {
+                    StatusCode = (int)HttpStatusCode.NotFound
+                };
             }
 
             return new ContentResult
             {
-                StatusCode = (int)HttpStatusCode.NotFound
+                StatusCode = (int)HttpStatusCode.InternalServerError
             };
         }
     }
