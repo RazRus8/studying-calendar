@@ -16,11 +16,11 @@ namespace studying_schedule.Controllers
     {
         [Route("api/signup")]
         [HttpPost]
-        public ContentResult SignUpUser(TempUserModel user)
+        public ContentResult SignUpUser(UserModel user)
         {
             if (ModelState.IsValid)
             {
-                //InsertData.InsertTempUser(user);
+                InsertData.InsertUser(user);
 
                 return new ContentResult
                 {

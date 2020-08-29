@@ -4,30 +4,26 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace studying_schedule.Models
 {
-    [Table("students")]
-    public class StudentModel : IUser
+    [Table("users")]
+    public class UserModel : IUser
     {
         [Key]
-        [Column("studentId")]
+        [Column("userId")]
         public int Id { get; set; }
 
-        [Required]
-        public int StudentGroup { get; set; }
+        [Column("userRole")]
+        public byte Role { get; set; }
 
-        [Required]
-        [Column("studentFirstName")]
+        [Column("userFirstName")]
         public string FirstName { get; set; }
 
-        [Required]
-        [Column("studentLastName")]
+        [Column("userLastName")]
         public string LastName { get; set; }
 
-        [Required]
-        [Column("studentEmail")]
+        [Column("userEmail")]
         public string Email { get; set; }
 
-        [Required]
-        [Column("studentPassword")]
+        [Column("userPassword")]
         public string Password { get; set; }
     }
 }

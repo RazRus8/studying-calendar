@@ -11,13 +11,11 @@ namespace studying_schedule.Database
     {
         private readonly string connectionString = @"server=localhost;database=studying_schedule_db;trusted_connection=true;";
 
-        public DbSet<TempUserModel> TempUsersSet { get; set; } // temp_users table
-        public DbSet<StudentModel> StudentsSet { get; set; } // students table
+        public DbSet<UserModel> UsersSet { get; set; } // users table
         public DbSet<StudentsGroupModel> StudentsGroupSet { get; set; } // students_group table
-        public DbSet<LecturerModel> LecturersSet { get; set; } // lecturers table
-        public DbSet<ManagerModel> ManagersSet { get; set; } // manager table
         public DbSet<LectureModel> LecturesSet { get; set; } // lectures table
         public DbSet<ScheduleModel> ScheduleSet { get; set; } // schedule table
+        public DbSet<UserRoleModel> RolesSet { get; set; } // roles table
 
         public AppContext()
         {

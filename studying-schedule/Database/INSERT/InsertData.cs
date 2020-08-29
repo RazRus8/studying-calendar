@@ -9,13 +9,13 @@ namespace studying_schedule.Database.INSERT
 {
     public class InsertData
     {
-        public static void InsertTempUser(TempUserModel user)
+        public static void InsertUser(UserModel user)
         {           
             try
             {
                 using (AppContext db = new AppContext())
                 {
-                    db.TempUsersSet.Add(user);
+                    db.UsersSet.Add(user);
                     db.SaveChanges();
                 }
             }
