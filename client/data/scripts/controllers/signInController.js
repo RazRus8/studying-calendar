@@ -3,7 +3,7 @@
     "use strict";
 
     // controller for sign in page
-    app.controller("signInController", function($location, signInService, navbarService)
+    app.controller("signInController", function($location, signInService, navbarService, userService)
     {
         console.log("sign in controller is working");
 
@@ -33,12 +33,24 @@
             {
                 console.log("Response status: ", value.status);
 
-                if (value.status == 200)
+                if (value.status == 200 && value.data.Role == 1)
                 {
-                    console.log("Redirection to home page");
-
-                    $location.url("/home");
+                    console.log("User role: student.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
+                    userService.setUser(value.data.FirstName);
+                    $location.url("/home/student/" + value.data.Id);
                 }
+                else if (value.status == 200 && value.data.Role == 2)
+                {
+                    console.log("User role: lecturer.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
+                    $location.url("/home/lecturer/" + value.data.Id);
+                }
+                else if (value.status == 200 && value.data.Role == 3)
+                {
+                    console.log("User role: manager.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
+                    $location.url("/home/manager");
+                }
+                
+                // to do handle 404 status
             });
         }
     });
