@@ -3,40 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using studying_schedule.Models;
+using studying_schedule.Models.SignIn;
 
 namespace studying_schedule.Database.SELECT
 {
     public class SelectData
     {
-        public static int ValidateUser(IUser user)
+        public static SignInModel ValidateUser(IUser user)
         {
             // to do: make method async
             try
             {
                 using (AppContext db = new AppContext())
                 {
-                    foreach (StudentModel student in db.StudentsSet)
-                    {
-                        if (user.Email == student.Email && user.Password == student.Password)
-                        {
-                            return 1;
-                        }
-                    }
+                    var student = db.StudentsSet.Where(stud => stud.Email == user.Email)
+                                                .Where(stud => stud.Password == user.Password)
+                                                .FirstOrDefault();
+                    
+                    var lecturer = db.LecturersSet.Where(lect => lect.Email == user.Email)
+                                                  .Where(lect => lect.Password == user.Password)
+                                                  .FirstOrDefault();
+                    
+                    var manager = db.ManagersSet.Where(man => man.Email == user.Email)
+                                                .Where(man => man.Password == user.Password)
+                                                .FirstOrDefault();
 
-                    foreach (LecturerModel lecturer in db.LecturersSet)
+                    if (student != null)
                     {
-                        if (user.Email == lecturer.Email && user.Password == lecturer.Password)
-                        {
-                            return 2;
-                        }
+                        return SetModel(student, 1);
                     }
-
-                    foreach (ManagerModel manager in db.ManagersSet)
+                    else if (lecturer != null)
                     {
-                        if (user.Email == manager.Email && user.Password == manager.Password)
-                        {
-                            return 3;
-                        }
+                        return SetModel(lecturer, 2);
+                    }
+                    else if (manager != null)
+                    {
+                        return SetModel(manager, 3);
+                    }
+                    else
+                    {
+                        return null;
                     }
                 }
             }
@@ -45,7 +51,18 @@ namespace studying_schedule.Database.SELECT
                 throw new Exception(ex.ToString());
             }
 
-            return -1;
+            throw new NotImplementedException();
+        }
+
+        private static SignInModel SetModel(IUser user, int roleId)
+        {
+            return new SignInModel
+            {
+                Id = user.Id,
+                RoleId = roleId,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
         }
     }
 }
