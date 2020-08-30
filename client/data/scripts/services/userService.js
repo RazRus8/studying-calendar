@@ -6,12 +6,12 @@
     {
         var user;
 
-        this.setUser = (user) =>
+        this.setUser = function(user)
         {
             this.user = user;
         }
 
-        this.getUser = () =>
+        this.getUser = function()
         {
             return this.user;
         }
