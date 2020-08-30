@@ -12,10 +12,6 @@ namespace studying_schedule.Models
         public int GroupId { get; set; }
 
         [Required]
-        [Column("student")]
-        public int Student { get; set; }
-
-        [Required]
         [Column("groupName")]
         public string GroupName { get; set; }
     }
