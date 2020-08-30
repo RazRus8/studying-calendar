@@ -23,6 +23,11 @@
             templateUrl: "data/views/manager/managerHomePage.html"
         });
 
+        $routeProvider.when("/home/manager/groups",
+        {
+            templateUrl: "data/views/manager/managerGroupsPage.html"
+        });
+
         $routeProvider.when("/home/manager/students",
         {
             templateUrl: "data/views/manager/managerStudentsPage.html"
