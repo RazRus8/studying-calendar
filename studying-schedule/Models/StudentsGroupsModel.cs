@@ -5,18 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace studying_schedule.Models
 {
     [Table("students_groups")]
-    public class StudentsGroupModel
+    public class StudentsGroupsModel
     {
         [Key]
-        [Column("groupId")]
-        public int GroupId { get; set; }
+        [Column("id")]
+        public int Id { get; set; }
 
         [Required]
         [Column("studentId")]
-        public string StudentId { get; set; }
+        public UserModel StudentId { get; set; }
 
         [Required]
-        [Column("groupName")]
-        public string GroupName { get; set; }
+        [Column("groupId")]
+        public GroupsModel GroupId { get; set; }
     }
 }

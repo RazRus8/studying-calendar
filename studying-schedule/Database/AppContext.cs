@@ -12,7 +12,8 @@ namespace studying_schedule.Database
         private readonly string connectionString = @"server=localhost;database=studying_schedule_db;trusted_connection=true;";
 
         public DbSet<UserModel> UsersSet { get; set; } // users table
-        public DbSet<StudentsGroupModel> StudentsGroupSet { get; set; } // students_group table
+        public DbSet<StudentsGroupsModel> StudentsGroupsSet { get; set; } // students_groups table
+        public DbSet<GroupsModel> GroupsSet { get; set; } // groups table
         public DbSet<LectureModel> LecturesSet { get; set; } // lectures table
         public DbSet<ScheduleModel> ScheduleSet { get; set; } // schedule table
         public DbSet<UserRoleModel> RolesSet { get; set; } // roles table
