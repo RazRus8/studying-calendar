@@ -7,7 +7,7 @@ using studying_schedule.Models;
 
 namespace studying_schedule.Database.INSERT
 {
-    public class InsertData
+    public class InsertUser
     {
         public static void Insert(UserModel user)
         {           
