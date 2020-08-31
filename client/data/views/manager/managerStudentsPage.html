@@ -1,24 +1,13 @@
-<div class="container" ng-controller="managerStudentsController as manCtrl">
-    <div class="row">
-        <div class="col">
-            <div class="mb-5">
-                <div>
-                    <span>
-                        <h4>Create group</h4>
-                    </span>
-                </div>
-                <div class="form-group" style="margin-left: 0; margin-right: 0;">
-                    <label>Group name</label>
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary">Create</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="container" style="width: 400px;" ng-controller="managerStudentsController as manCtrl">
+    <form>
+        <div>
+            <h4>Add students to the group</h4>
         </div>
-    </div>
+        <div class="form-group">
+            <label>Group name</label>
+            <select class="form-control" ng-model="suCtrl.data.select">
+                <option value="">Select group</option>
+            </select>
+        </div>
+    </form>
 </div>
