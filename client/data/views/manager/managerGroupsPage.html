@@ -1,43 +1,36 @@
-<div class="container" ng-controller="managerGroupsController as manCtrl">
-    <div class="row">
-        <div class="col">
-            <div class="mb-5">
-                <div>
-                    <span>
-                        <h4>Create group</h4>
-                    </span>
+<div class="container" style="width: 500px;" ng-controller="managerGroupsController as manCtrl">
+    <form>
+        <div>
+            <h4>Create group</h4>
+        </div>
+        <div class="form-group">
+            <label>Group name</label>
+            <div class="form-row">
+                <div class="col-10">
+                    <input type="text" class="form-control">
                 </div>
-                <div class="form-group" style="margin-left: 0; margin-right: 0;">
-                    <label>Group name</label>
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary">Create</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <span>
-                        <h4>Delete group</h4>
-                    </span>
-                </div>
-                <div class="form-group" style="margin-left: 0; margin-right: 0;">
-                    <label>Group name</label>
-                    <div class="form-row">
-                        <select class="form-control col">
-                            <option value="">Select group</option>
-                        </select>
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary">Delete</button>
-                        </div>
-                    </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary">Create</button>
                 </div>
             </div>
         </div>
-        <div class="col"></div>
-    </div>
+    </form>
+    <form class="mt-5">
+        <div>
+            <h4>Delete group</h4>
+        </div>
+        <div class="form-group">
+            <label>Group name</label>
+            <div class="form-row">
+                <div class="col-10">
+                    <select class="form-control">
+                        <option value="">Select group</option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
