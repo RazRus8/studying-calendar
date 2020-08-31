@@ -9,7 +9,7 @@ namespace studying_schedule.Database.INSERT
 {
     public class InsertData
     {
-        public static void InsertUser(UserModel user)
+        public static void Insert(UserModel user)
         {           
             try
             {

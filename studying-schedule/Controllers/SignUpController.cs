@@ -20,7 +20,7 @@ namespace studying_schedule.Controllers
         {
             if (ModelState.IsValid)
             {
-                InsertData.InsertUser(user);
+                InsertData.Insert(user);
 
                 return new ContentResult
                 {
