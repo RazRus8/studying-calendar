@@ -17,6 +17,6 @@ namespace studying_schedule.Models
 
         [Required]
         [Column("groupId")]
-        public GroupsModel GroupId { get; set; }
+        public GroupModel GroupId { get; set; }
     }
 }

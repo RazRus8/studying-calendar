@@ -13,7 +13,7 @@ namespace studying_schedule.Database
 
         public DbSet<UserModel> UsersSet { get; set; } // users table
         public DbSet<StudentsGroupsModel> StudentsGroupsSet { get; set; } // students_groups table
-        public DbSet<GroupsModel> GroupsSet { get; set; } // groups table
+        public DbSet<GroupModel> GroupsSet { get; set; } // groups table
         public DbSet<LectureModel> LecturesSet { get; set; } // lectures table
         public DbSet<ScheduleModel> ScheduleSet { get; set; } // schedule table
         public DbSet<UserRoleModel> RolesSet { get; set; } // roles table
