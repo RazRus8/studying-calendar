@@ -6,7 +6,7 @@ using studying_schedule.Models;
 
 namespace studying_schedule.Database.SELECT
 {
-    public class LoadInfo
+    public class LoadCalendarInfo
     {
         public static void LoadAll()
         {
