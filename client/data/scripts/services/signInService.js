@@ -2,7 +2,7 @@
 {
     "use strict";
 
-    app.service("signInService", function($http, $q)
+    app.service("signInService", function($q, $http)
     {
         // sign in for existing user
         this.signIn = function(user)
