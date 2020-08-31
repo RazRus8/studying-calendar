@@ -6,14 +6,14 @@ using studying_schedule.Models;
 
 namespace studying_schedule.Database.SELECT
 {
-    public class LoadCalendarInfo
+    public class SelectCalendarInfo
     {
-        public static void LoadAll()
+        public static void SelectAll()
         {
 
         }
 
-        public static void LoadFor(IUser user)
+        public static void SelectFor(IUser user)
         {
 
         }
