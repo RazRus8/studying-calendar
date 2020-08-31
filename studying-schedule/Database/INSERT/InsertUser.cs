@@ -1,5 +1,4 @@
 ﻿using System;
-
 using studying_schedule.Models;
 
 namespace studying_schedule.Database.INSERT
