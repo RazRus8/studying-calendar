@@ -2,9 +2,9 @@
 {
     "use strict";
 
-    app.controller("managerGroupsController", function($route, navbarService, managerSelectService, managerGroupService)
+    app.controller("managerLecturesController", function($route, navbarService, managerSelectService, managerLectureService)
     {
-        console.log("manager groups page controller is working");
+        console.log("manager lectures page controller is working");
 
         // enable icons in navbar
         navbarService.setIcons("/data/views/icons.html");
@@ -20,22 +20,22 @@
 
         // set active tab
         navbarService.setTab1("tab1");
-        navbarService.setTab2("tab2-active");
-        navbarService.setTab3("tab3");
+        navbarService.setTab2("tab2");
+        navbarService.setTab3("tab3-active");
         navbarService.setTab4("tab4");
         navbarService.setTab5("tab5");
 
         // add new group to the db
-        this.createGroup = function()
+        this.createLecture = function()
         {
-            var newGroup = 
+            var newLecture = 
             {
-                GroupName: this.group
+                LectureName: this.lecture
             }
 
-            console.log(newGroup);
+            console.log(newLecture);
 
-            var promiseObj = managerGroupService.createGroup(newGroup);
+            var promiseObj = managerLectureService.createLecture(newLecture);
 
             promiseObj.then(function(value)
             {
@@ -48,14 +48,14 @@
             });
         }
 
-        this.groups = managerGroupService.getGroups();
+        this.lectures = managerLectureService.getLectures();
 
-        this.deleteGroup = function()
+        this.deleteLecture = function()
         {
             var id = parseInt(this.value);
-            var group = {GroupId: id};
+            var lecture = {LectureId: id};
 
-            var promiseObj = managerGroupService.deleteGroup(group);
+            var promiseObj = managerLectureService.deleteLecture(lecture);  
 
             promiseObj.then(function(value)
             {

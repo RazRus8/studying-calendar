@@ -1,0 +1,37 @@
+<div class="container" style="width: 500px;" ng-controller="managerLecturesController as manCtrl">
+    <form>
+        <div>
+            <h4>Create lecture</h4>
+        </div>
+        <div class="form-group">
+            <label>Lecture name</label>
+            <div class="form-row">
+                <div class="col-10">
+                    <input type="text" class="form-control" ng-model="manCtrl.lecture">
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary" ng-click="manCtrl.createLecture()">Create</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form class="mt-5">
+        <div>
+            <h4>Delete lecture</h4>
+        </div>
+        <div class="form-group">
+            <label>Lecture name</label>
+            <div class="form-row">
+                <div class="col-10">
+                    <select class="form-control" ng-model="manCtrl.value">
+                        <option value="">Select lecture</option>
+                        <option ng-repeat="lecture in manCtrl.lectures.lectures" value="{{lecture.LectureId}}">{{lecture.LectureName}}</option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary" ng-click="manCtrl.deleteLecture()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

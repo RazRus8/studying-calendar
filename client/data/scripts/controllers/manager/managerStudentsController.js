@@ -18,9 +18,11 @@
         // set select for hours and minutes
         this.time = managerSelectService.setTime();
 
+        // set active tab
         navbarService.setTab1("tab1");
         navbarService.setTab2("tab2");
-        navbarService.setTab3("tab3-active");
-        navbarService.setTab4("tab4");
+        navbarService.setTab3("tab3");
+        navbarService.setTab4("tab4-active");
+        navbarService.setTab5("tab5");
     });
 }());

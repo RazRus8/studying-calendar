@@ -12,6 +12,7 @@
         var tab2;
         var tab3;
         var tab4;
+        var tab5;
 
         // enable|disble icons in navbar
         this.setIcons = function(url)
@@ -60,6 +61,13 @@
         {
             this.tab4 = tab;
             return tab4;
+        }
+
+        // set id for activation tab #5
+        this.setTab5 = function(tab)
+        {
+            this.tab5 = tab;
+            return tab5;
         }
     });
 }());

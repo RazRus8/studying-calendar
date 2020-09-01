@@ -22,6 +22,7 @@
         navbarService.setTab2("tab2");
         navbarService.setTab3("tab3");
         navbarService.setTab4("tab4");
+        navbarService.setTab5("tab5");
 
     });
 }());

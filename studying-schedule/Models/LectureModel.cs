@@ -11,7 +11,6 @@ namespace studying_schedule.Models
         [Column("lectureId")]
         public int LectureId { get; set; }
 
-        [Required]
         [Column("lectureName")]
         public string LectureName { get; set; }
     }

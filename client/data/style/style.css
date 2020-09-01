@@ -23,7 +23,8 @@
 #tab1,
 #tab2,
 #tab3,
-#tab4
+#tab4,
+#tab5
 {
     border-bottom-style: solid;
     border-bottom-width: 1.5px;
@@ -34,7 +35,8 @@
 #tab1:hover,
 #tab2:hover,
 #tab3:hover,
-#tab4:hover
+#tab4:hover,
+#tab5:hover
 {
     border-bottom-style: solid;
     border-bottom-width: 1.5px;
@@ -45,7 +47,8 @@
 #tab1 .tab-title,
 #tab2 .tab-title,
 #tab3 .tab-title,
-#tab4 .tab-title
+#tab4 .tab-title,
+#tab5 .tab-title
 {
     color: #5f5f5f;
     font-size: 1.1em;
@@ -55,7 +58,8 @@
 #tab1-active,
 #tab2-active,
 #tab3-active,
-#tab4-active
+#tab4-active,
+#tab5-active
 {
     border-bottom-style: solid;
     border-bottom-width: 1.5px;
@@ -65,7 +69,8 @@
 #tab1-active .tab-title,
 #tab2-active .tab-title,
 #tab3-active .tab-title,
-#tab4-active .tab-title
+#tab4-active .tab-title,
+#tab5-active .tab-title
 {
     color: #000000;
     font-size: 1.1em;
