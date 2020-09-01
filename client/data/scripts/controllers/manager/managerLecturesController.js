@@ -25,7 +25,7 @@
         navbarService.setTab4("tab4");
         navbarService.setTab5("tab5");
 
-        // add new group to the db
+        // add new lecture to the db
         this.createLecture = function()
         {
             var newLecture = 
@@ -48,8 +48,10 @@
             });
         }
 
+        // available lectures for select elements
         this.lectures = managerLectureService.getLectures();
 
+        // delete selected lecture from the db
         this.deleteLecture = function()
         {
             var id = parseInt(this.value);

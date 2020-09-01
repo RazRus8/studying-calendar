@@ -48,8 +48,10 @@
             });
         }
 
+        // available groups for select elements
         this.groups = managerGroupService.getGroups();
 
+        // delete selected group from the db
         this.deleteGroup = function()
         {
             var id = parseInt(this.value);
