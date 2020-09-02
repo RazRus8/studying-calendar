@@ -28,7 +28,7 @@
         this.getGroups = function()
         {
             var deferred = $q.defer();
-            var groups = {init: null};
+            var groups = {};
 
             $http({
                 method: "GET",
