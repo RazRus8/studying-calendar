@@ -28,7 +28,7 @@
         this.getLectures = function()
         {
             var deferred = $q.defer();
-            var lectures = {init: null};
+            var lectures = {};
 
             $http({
                 method: "GET",
