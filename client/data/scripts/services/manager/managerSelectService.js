@@ -8,7 +8,7 @@
         {
             var hours = [];
             var minutes = [];
-            var time = {initH: null, initM: null};
+            var time = {};
 
             for (var i = 1; i <= 24; i++)
             {
