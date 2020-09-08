@@ -4,39 +4,59 @@
             <form class="container">
                 <div class="form-group">
                     <label>Group</label>
-                    <select class="form-control">
+                    <select class="form-control" ng-model="manCtrl.GroupId">
                         <option value="">Select group</option>
+                        <option ng-repeat="group in manCtrl.groups.groups" value="{{group.GroupId}}">{{group.GroupName}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Lecture</label>
-                    <select class="form-control">
+                    <select class="form-control" ng-model="manCtrl.LectureId">
                         <option value="">Select lecture</option>
+                        <option ng-repeat="lecture in manCtrl.lectures.lectures" value="{{lecture.LectureId}}">{{lecture.LectureName}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Lecturer</label>
-                    <select class="form-control">
+                    <select class="form-control" ng-model="manCtrl.Id">
                         <option value="">Select lecturer</option>
+                        <option ng-repeat="lecturer in manCtrl.lecturers.lecturers" value="{{lecturer.Id}}">{{lecturer.FirstName + " " + lecturer.LastName}}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Time</label>
-                    <div class="form-row" style="margin-left: 0; margin-right: 0;">
-                        <div class="col mr-3">
-                            <select class="form-control" ng-model="manCtrl.time.initH">
+                    <label>Start time</label>
+                    <div class="form-row">
+                        <div class="col-4">
+                            <select class="form-control" ng-model="manCtrl.startTime.hour.key">
                                 <option value="">Hours</option>
-                                <option ng-repeat="hour in manCtrl.time.hours" value="{{hour.key}}">{{hour.value}}</option>
+                                <option ng-repeat="hour in manCtrl.startTime.hours" value="{{hour.key}}">{{hour.value}}</option>
                             </select>
                         </div>
-                        <div class="col mr-3">
-                            <select class="form-control" ng-model="manCtrl.time.initM">
+                        <div class="col-4">
+                            <select class="form-control" ng-model="manCtrl.startTime.minute.key">
                                 <option value="">Minutes</option>
-                                <option ng-repeat="minute in manCtrl.time.minutes" value="{{minute.key}}">{{minute.value}}</option>
+                                <option ng-repeat="minute in manCtrl.startTime.minutes" value="{{minute.key}}">{{minute.value}}</option>
                             </select>
                         </div>
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary">Apply</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>End time</label>
+                    <div class="form-row">
+                        <div class="col-4">
+                            <select class="form-control" ng-model="manCtrl.endTime.hour.key">
+                                <option value="">Hours</option>
+                                <option ng-repeat="hour in manCtrl.endTime.hours" value="{{hour.key}}">{{hour.value}}</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <select class="form-control" ng-model="manCtrl.endTime.minute.key">
+                                <option value="">Minutes</option>
+                                <option ng-repeat="minute in manCtrl.endTime.minutes" value="{{minute.key}}">{{minute.value}}</option>
+                            </select>
+                        </div>
+                        <div class="col ml-1">
+                            <button type="submit" class="btn btn-primary" ng-click="manCtrl.createSchedule()">Apply</button>
                         </div>
                     </div>
                 </div>
@@ -49,7 +69,7 @@
                         <img src="./data/externalLinks/bootstrap-icons-1.0.0-alpha5/caret-left.svg" alt="" width="30em" height="30em">
                     </a>
                     <div class="date">
-                        <h2 ng-bind="month"></h2>
+                        <h2>{{monthYear.month}} {{monthYear.year}}</h2>
                     </div>
                     <a class="next pr-sm-2 pr-xl-4" ng-click="next()">
                         <img src="./data/externalLinks/bootstrap-icons-1.0.0-alpha5/caret-right.svg" alt="" width="30em" height="30em"> 
