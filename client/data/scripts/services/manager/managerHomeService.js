@@ -2,14 +2,25 @@
 {
     "use strict";
 
-    app.service("managerService", function()
+    app.service("managerHomeService", function($q, $http)
     {
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
         // set month for calendar
         this.setMonth = function(date)
-        {
-            return months[date.getMonth()] + " " + date.getFullYear();
+        {   
+            //var day = null;
+            var monthIndex = date.getMonth();
+            var month = months[date.getMonth()];
+            var year = date.getFullYear();
+            var monthYear = {};
+            
+            //monthYear["day"] = day;
+            monthYear["monthIndex"] = monthIndex;
+            monthYear["month"] = month;
+            monthYear["year"] = year;
+
+            return monthYear;
         }
 
         // set days for calendar
@@ -47,7 +58,7 @@
 
             for (var j = 1; j <= this.lastDay; j++)
             {
-                this.days += "<div class=\"cur-date\">" + j + "</div>";
+                this.days += "<div class=\"cur-date\" id=\"" + j + "\">" + j + "</div>";
             }
 
             for (var k = 1; k <= this.nextDays; k++)
@@ -69,7 +80,76 @@
                 days[0].children[i].setAttribute("style", "height: " + size + "px;");
             }
         }
-
         
+        // get all lecturers
+        this.getLecturers = function()
+        {
+            var deferred = $q.defer();
+            var lecturers = {init: null};
+
+            $http({
+                method: "GET",
+                url: "http://localhost:50157/api/getlecturers"
+            })
+            .then(function success(response)
+            {
+                deferred.resolve(response);
+            },
+            function error(response)
+            {
+                deferred.reject(response);
+            });
+
+            var promiseObj = deferred.promise;
+
+            promiseObj.then(function(value)
+            {
+                lecturers["lecturers"] = value.data;
+            });
+
+            return lecturers;
+        }
+
+        this.getSchedule = function(monthYearParam)
+        {
+            var deferred = $q.defer();
+
+            $http({
+                method: "POST",
+                data: monthYearParam,
+                url: "http://localhost:50157/api/getschedule"
+            })
+            .then(function success(response)
+            {
+                deferred.resolve(response);
+            },
+            function error(response)
+            {
+                deferred.reject(response);
+            });
+
+            return deferred.promise;
+        }
+
+        this.setSchedule = function(schedules)
+        {
+            var deferred = $q.defer();
+
+            $http({
+                method: "POST",
+                data: schedules,
+                url: "http://localhost:50157/api/createschedule"
+            })
+            .then(function success(response)
+            {
+                deferred.resolve(response);
+            },
+            function error(response)
+            {
+                deferred.reject(response);
+            });
+
+            return deferred.promise;
+        }
     });
 }());
