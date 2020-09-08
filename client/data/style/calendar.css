@@ -1,11 +1,12 @@
 /* disable left and right margin for element with class name .row */
-.row.manager
+.row.page,
+.page
 {
     margin-left: 0px;
     margin-right: 0px;
 }
 
-.row.manager .col
+.row.page .col
 {
     padding: 0;
 }
@@ -18,12 +19,10 @@
 .calendar
 {
     width: 100%;
-    /* background-color: rgb(129, 207, 168); */
 }
 
 .month
 {
-    /* background-color: rgb(196, 78, 98); */
     height: 7em;
 }
 
