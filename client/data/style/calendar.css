@@ -54,6 +54,7 @@
     align-items: center;
     transition: background-color 0.2s;
     border-radius: 0.25rem;
+    position: relative;
 }
 
 /* set animation for hover elements */
@@ -75,9 +76,38 @@
 }
 
 /* change color for selected elements */
-.active-date
+.selected-date
 {
     background-color: #007bff;
     color: #ffffff;
     cursor: pointer;
+}
+
+/* days with info */
+.active-date
+{
+    background-color: #cee7ff;
+    cursor: pointer;
+}
+
+.active-date::before
+{
+    visibility: hidden;
+    position: absolute;
+    top: 75px;
+    z-index: 1;
+}
+
+.active-date:hover::before
+{
+    visibility: visible;
+    content: attr(data-tooltip);
+    padding: 10px;
+    text-align: left;
+    color: white;
+    font-size: 75%;
+    width: max-content;
+    background: #666666f6;
+    border-radius: 0.25rem;
+    white-space: pre-line;
 }
