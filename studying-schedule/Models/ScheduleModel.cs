@@ -7,6 +7,9 @@ namespace studying_schedule.Models
     [Table("schedule")]
     public class ScheduleModel
     {
+        private DateTime lectureDateTimeStart;
+        private DateTime lectureDateTimeEnd;
+
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -21,9 +24,23 @@ namespace studying_schedule.Models
         public int Lecture { get; set; }
 
         [Column("lectureDateTimeStart")]
-        public DateTime LectureDateTimeStart { get; set; }
+        public DateTime LectureDateTimeStart
+        {
+            get { return lectureDateTimeStart; }
+            set
+            {
+                lectureDateTimeStart = value.ToLocalTime();
+            }
+        }
 
         [Column("lectureDateTimeEnd")]
-        public DateTime LectureDateTimeEnd { get; set; }
+        public DateTime LectureDateTimeEnd
+        {
+            get { return lectureDateTimeEnd; }
+            set
+            {
+                lectureDateTimeEnd = value.ToLocalTime();
+            }
+        }
     }
 }
