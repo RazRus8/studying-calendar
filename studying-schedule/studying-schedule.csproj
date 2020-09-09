@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <Folder Include="Database\UPDATE\" />
+    <Folder Include="Models\MonthYear\" />
+    <Folder Include="Models\StudentInfo\" />
   </ItemGroup>
 
 

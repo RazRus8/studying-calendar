@@ -4,9 +4,9 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using studying_schedule.Models;
+using studying_schedule.Models.MonthYear;
 using studying_schedule.Database.SELECT;
 using studying_schedule.Database.INSERT;
-using studying_schedule.Database.DELETE;
 
 namespace studying_schedule.Controllers
 {
@@ -59,6 +59,13 @@ namespace studying_schedule.Controllers
                     StatusCode = (int)HttpStatusCode.InternalServerError
                 };
             }
+        }
+
+        [Route("api/getschedulefor")]
+        [HttpPost]
+        public ContentResult GetScheduleFor()
+        {
+            throw new NotImplementedException();
         }
     }
 }
