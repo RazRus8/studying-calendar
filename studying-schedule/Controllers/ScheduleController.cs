@@ -66,7 +66,14 @@ namespace studying_schedule.Controllers
         {
             if (ModelState.IsValid)
             {
-                throw new NotImplementedException();
+                var fullSchedule = SelectSchedule.SelectForUser(user);
+
+                return new ContentResult
+                {
+                    Content = JsonSerializer.Serialize(fullSchedule),
+                    ContentType = "application/json",
+                    StatusCode = (int)HttpStatusCode.OK
+                };
             }
             else
             {
