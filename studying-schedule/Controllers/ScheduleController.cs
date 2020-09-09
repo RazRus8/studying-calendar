@@ -42,8 +42,7 @@ namespace studying_schedule.Controllers
         {
             if (ModelState.IsValid)
             {
-                var minSchedule = SelectSchedule.SelectFor(monthYear);
-                var fullSchedule = SelectSchedule.Convert(minSchedule);
+                var fullSchedule = SelectSchedule.SelectFor(monthYear);
 
                 return new ContentResult
                 {
@@ -63,9 +62,19 @@ namespace studying_schedule.Controllers
 
         [Route("api/getschedulefor")]
         [HttpPost]
-        public ContentResult GetScheduleFor()
+        public ContentResult GetScheduleFor(UserInfo user)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                return new ContentResult
+                {
+                    StatusCode = (int)HttpStatusCode.InternalServerError
+                };
+            }
         }
     }
 }
