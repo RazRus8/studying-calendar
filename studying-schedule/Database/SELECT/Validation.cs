@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using studying_schedule.Models;
+using studying_schedule.Models.UserInterface;
 
 namespace studying_schedule.Database.SELECT
 {

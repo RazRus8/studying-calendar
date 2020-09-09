@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace studying_schedule.Models.Interface
+namespace studying_schedule.Models.UserInterface
 {
     public interface IUser
     {

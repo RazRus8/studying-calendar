@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using studying_schedule.Models.Interface;
+using studying_schedule.Models.UserInterface;
 
 namespace studying_schedule.Models
 {
