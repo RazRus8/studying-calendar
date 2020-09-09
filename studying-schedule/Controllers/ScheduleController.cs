@@ -4,7 +4,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using studying_schedule.Models;
-using studying_schedule.Models.MonthYear;
+using studying_schedule.Models.Info;
 using studying_schedule.Database.SELECT;
 using studying_schedule.Database.INSERT;
 

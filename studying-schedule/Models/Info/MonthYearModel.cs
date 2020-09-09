@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace studying_schedule.Models.MonthYear
+namespace studying_schedule.Models.Info
 {
     public class MonthYearModel
     {

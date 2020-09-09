@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using studying_schedule.Models;
-using studying_schedule.Models.MonthYear;
+using studying_schedule.Models.Info;
 
 namespace studying_schedule.Database.SELECT
 {
