@@ -1,4 +1,30 @@
-<div class="container" ng-controller="studentController as studCtrl">
-    <h5 style="text-align: center;" ng-bind="studCtrl.student"></h5>
-    <h4 style="text-align: center;">Students home page is under construction</h4>
+<div class="container" ng-controller="studentHomeController as studCtrl">
+    <div class="page">
+        <div class="card mx-auto" style="max-width: 500px;">
+            <div class="calendar">
+                <div class="month d-flex align-items-center justify-content-between card-header">
+                    <a class="prev pl-sm-2 pl-xl-4" ng-click="prev()">
+                        <img src="./data/externalLinks/bootstrap-icons-1.0.0-alpha5/caret-left.svg" alt="" width="30em" height="30em">
+                    </a>
+                    <div class="date">
+                        <h2>{{monthYear.month}} {{monthYear.year}}</h2>
+                    </div>
+                    <a class="next pr-sm-2 pr-xl-4" ng-click="next()">
+                        <img src="./data/externalLinks/bootstrap-icons-1.0.0-alpha5/caret-right.svg" alt="" width="30em" height="30em"> 
+                    </a>
+                </div>
+                <div class="weekdays d-flex align-items-center justify-content-center card-body">
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                    <div>San</div>
+                </div>
+                <div class="days d-flex flex-wrap align-items-center justify-content-center" student-directive>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
