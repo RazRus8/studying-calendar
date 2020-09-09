@@ -56,8 +56,13 @@
     position: relative;
 }
 
+/* set cursor for student and lecturer calendar */
+.days .disabled-date:hover
+{
+    cursor: default;
+}
+
 /* set animation for hover elements */
-/* .days div:hover:not(.active-date) */
 .days .cur-date:hover
 {
     background-color: #007bff;
