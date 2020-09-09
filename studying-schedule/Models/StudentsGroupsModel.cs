@@ -13,10 +13,10 @@ namespace studying_schedule.Models
 
         [Required]
         [Column("studentId")]
-        public UserModel StudentId { get; set; }
+        public int StudentId { get; set; }
 
         [Required]
         [Column("groupId")]
-        public GroupModel GroupId { get; set; }
+        public int GroupId { get; set; }
     }
 }
