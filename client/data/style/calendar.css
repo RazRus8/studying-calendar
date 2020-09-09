@@ -11,7 +11,8 @@
     padding: 0;
 }
 
-.col.card .calendar .card-body
+.col.card .calendar .card-body,
+.card .calendar .card-body
 {
     padding: 0;
 }
