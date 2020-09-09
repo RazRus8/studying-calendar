@@ -1,11 +1,11 @@
 <ul class="navbar-nav flex-row">
     <li id="{{nbCtrl.navbarService.tab1}}" class="nav-item mr-sm-2 pt-3">
-        <a class="nav-link" href="#!home/student/1"><!--change id-->
+        <a class="nav-link" href="#!home/student/{{nbCtrl.user.getUser()}}">
             <span class="tab-title">Calendar</span>
         </a>
     </li>
     <li id="{{nbCtrl.navbarService.tab2}}" class="nav-item pt-3">
-        <a class="nav-link" href="#!home/student/1/settings"><!--change id-->
+        <a class="nav-link" href="#!home/student/{{nbCtrl.user.getUser()}}/settings">
             <span class="tab-title">Settings</span>
         </a>
     </li>
