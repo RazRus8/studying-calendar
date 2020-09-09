@@ -41,9 +41,9 @@
                 }
                 else if (value.status == 200 && value.data.Role == 2)
                 {
-                    console.log("User role: lecturer.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
+                    console.log("User role: teacher.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
                     userService.setUser(value.data.Id);
-                    $location.url("/home/lecturer/" + value.data.Id);
+                    $location.url("/home/teacher/" + value.data.Id);
                 }
                 else if (value.status == 200 && value.data.Role == 3)
                 {

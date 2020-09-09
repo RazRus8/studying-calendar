@@ -54,15 +54,15 @@
             templateUrl: "data/views/student/studentSettingsPage.html"
         });
 
-        // lecturer routes
-        $routeProvider.when("/home/lecturer/:id",
+        // teacher routes
+        $routeProvider.when("/home/teacher/:id",
         {
-            templateUrl: "data/views/lecturer/lecturerHomePage.html"
+            templateUrl: "data/views/teacher/teacherHomePage.html"
         });
 
-        $routeProvider.when("/home/lecturer/:id/settings",
+        $routeProvider.when("/home/teacher/:id/settings",
         {
-            templateUrl: "data/views/lecturer/lecturerSettingsPage.html"
+            templateUrl: "data/views/teacher/teacherSettingsPage.html"
         });
     });
 }());

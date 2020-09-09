@@ -27,13 +27,7 @@
                         var elem = angular.element(document.getElementById(startDate.getDate()));
                         elem.removeClass("cur-date").addClass("active-date");
                         
-                        elem.attr("data-tooltip", `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nLecturer: ${item.LecturerFullName}\nLecture start time: ${startDate.getHours()}:${startDate.getMinutes()}\nLecture end time: ${endDate.getHours()}:${endDate.getMinutes()}`);
-                        
-                        // console.log(`Group: ${item.StudentsGroupName}`);
-                        // console.log(`Lecture: ${item.LectureName}`);
-                        // console.log(`Lecturer: ${item.LecturerFullName}`);
-                        // console.log(`Lecture start time: ${startDate.getHours()}:${startDate.getMinutes()}`);
-                        // console.log(`Lecture end time: ${endDate.getHours()}:${endDate.getMinutes()}`);
+                        elem.attr("data-tooltip", `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nTeacher: ${item.TeacherFullName}\nLecture start time: ${startDate.getHours()}:${startDate.getMinutes()}\nLecture end time: ${endDate.getHours()}:${endDate.getMinutes()}`);
 
                         daysInfo[startDate.getDate()] = item;
                     }
@@ -136,7 +130,7 @@
                     var dayInfo = daysInfo[angular.element(event.target).attr("id")];
                     //console.log(dayInfo);
 
-                    //var info = `Group: ${dayInfo.StudentsGroupName} Lecture: ${dayInfo.LectureName} Lecturer: ${dayInfo.LecturerFullName}`;
+                    //var info = `Group: ${dayInfo.StudentsGroupName} Lecture: ${dayInfo.LectureName} Teacher: ${dayInfo.TeacherFullName}`;
                 });
             }
         };

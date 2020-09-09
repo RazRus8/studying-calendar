@@ -7,7 +7,7 @@ namespace studying_schedule.Database.SELECT
 {
     public class SelectUser
     {
-        public static List<UserModel> SelectAllLecturers()
+        public static List<UserModel> SelectAllTeachers()
         {
             try
             {

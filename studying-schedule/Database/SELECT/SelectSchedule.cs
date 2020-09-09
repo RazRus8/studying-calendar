@@ -65,7 +65,7 @@ namespace studying_schedule.Database.SELECT
                 {
                     foreach (ScheduleModel model in schedules)
                     {
-                        string fullName = db.UsersSet.Where(user => user.Id == model.Lecturer)
+                        string fullName = db.UsersSet.Where(user => user.Id == model.TeacherId)
                                                      .Select(x => ($"{x.FirstName} {x.LastName}"))
                                                      .FirstOrDefault();
 
@@ -73,13 +73,13 @@ namespace studying_schedule.Database.SELECT
                                                    .Select(x => x.GroupName)
                                                    .FirstOrDefault();
 
-                        string lecture = db.LecturesSet.Where(lect => lect.LectureId == model.Lecture)
+                        string lecture = db.LecturesSet.Where(lect => lect.LectureId == model.LectureId)
                                                        .Select(x => x.LectureName)
                                                        .FirstOrDefault();
 
                         var schedule = new FullScheduleModel
                         {
-                            LecturerFullName = fullName,
+                            TeacherFullName = fullName,
                             StudentsGroupName = group,
                             LectureName = lecture,
                             LectureDateTimeStart = model.LectureDateTimeStart,

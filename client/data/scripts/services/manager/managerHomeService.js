@@ -81,15 +81,15 @@
             }
         }
         
-        // get all lecturers
-        this.getLecturers = function()
+        // get all teachers
+        this.getTeachers = function()
         {
             var deferred = $q.defer();
-            var lecturers = {init: null};
+            var teachers = {init: null};
 
             $http({
                 method: "GET",
-                url: "http://localhost:50157/api/getlecturers"
+                url: "http://localhost:50157/api/getteachers"
             })
             .then(function success(response)
             {
@@ -104,10 +104,10 @@
 
             promiseObj.then(function(value)
             {
-                lecturers["lecturers"] = value.data;
+                teachers["teachers"] = value.data;
             });
 
-            return lecturers;
+            return teachers;
         }
 
         this.getSchedule = function(monthYearParam)

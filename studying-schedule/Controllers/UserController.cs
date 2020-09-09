@@ -10,11 +10,11 @@ namespace studying_schedule.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        [Route("api/getlecturers")]
+        [Route("api/getteachers")]
         [HttpGet]
-        public ContentResult GetLecturers()
+        public ContentResult GetTeachers()
         {
-            var lecturers = SelectUser.SelectAllLecturers();
+            var lecturers = SelectUser.SelectAllTeachers();
 
             return new ContentResult
             {

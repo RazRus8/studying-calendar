@@ -57,7 +57,7 @@
     position: relative;
 }
 
-/* set cursor for student and lecturer calendar */
+/* set cursor for student and teacher calendar */
 .days .disabled-date:hover
 {
     cursor: default;

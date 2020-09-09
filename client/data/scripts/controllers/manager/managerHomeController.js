@@ -32,8 +32,8 @@
         // lectures for select element
         this.lectures = managerLectureService.getLectures();
 
-        // lecturers for select element
-        this.lecturers = managerHomeService.getLecturers();
+        // teachers for select element
+        this.teachers = managerHomeService.getTeachers();
 
         this.createSchedule = function()
         {
@@ -51,7 +51,7 @@
                     {
                         var schedule = 
                         {
-                            Lecturer: parseInt(this.Id),
+                            TeacherId: parseInt(this.Id),
                             StudentsGroup: parseInt(this.GroupId),
                             Lecture: parseInt(this.LectureId),
                             LectureDateTimeStart: new Date(value.year, value.monthIndex, value.day),
@@ -72,7 +72,7 @@
                     {
                         var schedule = 
                         {
-                            Lecturer: parseInt(this.Id),
+                            TeacherId: parseInt(this.Id),
                             StudentsGroup: parseInt(this.GroupId),
                             Lecture: parseInt(this.LectureId),
                             LectureDateTimeStart: new Date(value.year, value.monthIndex, value.day, startHour, startMinutes, 0),

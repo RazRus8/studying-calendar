@@ -14,14 +14,14 @@ namespace studying_schedule.Models
         [Column("id")]
         public int Id { get; set; }
 
-        [Column("lecturer")]
-        public int Lecturer { get; set; }
+        [Column("teacherId")]
+        public int TeacherId { get; set; }
 
         [Column("studentsGroup")]
         public int StudentsGroup { get; set; }
 
-        [Column("lecture")]
-        public int Lecture { get; set; }
+        [Column("lectureId")]
+        public int LectureId { get; set; }
 
         [Column("lectureDateTimeStart")]
         public DateTime LectureDateTimeStart

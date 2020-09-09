@@ -4,7 +4,7 @@ namespace studying_schedule.Models.Info
 {
     public class FullScheduleModel
     {
-        public string LecturerFullName { get; set; }
+        public string TeacherFullName { get; set; }
         public string StudentsGroupName { get; set; }
         public string LectureName { get; set; }
         public DateTime LectureDateTimeStart { get; set; }
