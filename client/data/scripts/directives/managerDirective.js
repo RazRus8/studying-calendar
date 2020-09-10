@@ -2,7 +2,7 @@
 {
     "use strict";
 
-    app.directive("managerDirective", function(managerHomeService)
+    app.directive("managerDirective", function(managerHomeService, $timeout)
     {
         function getSchedule(param)
         {
@@ -22,14 +22,17 @@
                 {
                     for (var item of value.data)
                     {
-                        var startDate = new Date(item.LectureDateTimeStart);
-                        var endDate = new Date(item.LectureDateTimeEnd);
-                        var elem = angular.element(document.getElementById(startDate.getDate()));
-                        elem.removeClass("cur-date").addClass("active-date");
-                        
-                        elem.attr("data-tooltip", `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nTeacher: ${item.TeacherFullName}\nLecture start time: ${startDate.getHours()}:${startDate.getMinutes()}\nLecture end time: ${endDate.getHours()}:${endDate.getMinutes()}`);
+                        var date = new Date(item.LectureDateTimeStart);
 
-                        daysInfo[startDate.getDate()] = item;
+                        if (daysInfo[date.getDate()] === undefined)
+                        {
+                            daysInfo[date.getDate()] = [];
+                        }
+
+                        var elem = angular.element(document.getElementById(date.getDate()));
+                        elem.removeClass("cur-date").addClass("active-date");
+                        elem.attr("data-info", "true");
+                        daysInfo[date.getDate()].push(item);
                     }
                 }
             });
@@ -112,9 +115,34 @@
                             scope.daysMonthsYearsOfSelected = daysMonthsYears;
                         });
                     }
+                    else if (unit[0].className == "active-date")
+                    {
+                        unit.removeClass("active-date").addClass("selected-date");
+                        
+                        scope.$apply(() => 
+                        {
+                            var selectedDay = parseInt(unit.attr("id"));
+
+                            var newMonthYear = {};
+                            newMonthYear["day"] = selectedDay;
+                            newMonthYear["monthIndex"] = scope.monthYear.monthIndex;
+                            newMonthYear["month"] = scope.monthYear.month;
+                            newMonthYear["year"] = scope.monthYear.year;
+                            daysMonthsYears[selectedDay] = newMonthYear;
+
+                            scope.daysMonthsYearsOfSelected = daysMonthsYears;
+                        });
+                    }
                     else if (unit[0].className == "selected-date")
                     {
-                        unit.removeClass("selected-date").addClass("cur-date");
+                        if (unit.attr("data-info") == "true")
+                        {
+                            unit.removeClass("selected-date").addClass("active-date");
+                        }
+                        else
+                        {
+                            unit.removeClass("selected-date").addClass("cur-date");
+                        }
 
                         scope.$apply(() => 
                         {
@@ -125,12 +153,47 @@
                     }
                 });
 
-                element.on("mouseenter", ".active-date", function(event)
+                element.on("mouseenter", "[data-info]", function(event)
                 {
-                    var dayInfo = daysInfo[angular.element(event.target).attr("id")];
-                    //console.log(dayInfo);
+                    var elem = angular.element(event.target);
 
-                    //var info = `Group: ${dayInfo.StudentsGroupName} Lecture: ${dayInfo.LectureName} Teacher: ${dayInfo.TeacherFullName}`;
+                    if (elem.attr("id") !== undefined)
+                    {
+                        angular.element(document.getElementsByClassName("info")).remove();
+                        var dayInfo = daysInfo[elem.attr("id")];
+
+                        var display = "";
+
+                        var counter = dayInfo.length;
+
+                        for (var item of dayInfo)
+                        {
+                            --counter;
+                            var info = `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nTeacher: ${item.TeacherFullName}\nLecture start time: ${new Date(item.LectureDateTimeStart).getHours()}:${new Date(item.LectureDateTimeStart).getMinutes()}\nLecture end time: ${new Date(item.LectureDateTimeEnd).getHours()}:${new Date(item.LectureDateTimeEnd).getMinutes()}`;
+                        
+                            if (counter > 0)
+                            {
+                                display += `${info}\n-------------------------\n`;
+                            }
+                            else
+                            {
+                                display += `${info}`;
+                            }
+                        
+                        }
+
+                        elem.append(`<span class="info">${display}</span>`);
+                    }
+                });
+
+                element.on("mouseenter", ".cur-date, .selected-date, .prev-date, .next-date", function()
+                {
+                    angular.element(document.getElementsByClassName("info")).remove();
+                });
+
+                element.on("mouseleave", function()
+                {
+                    angular.element(document.getElementsByClassName("info")).remove();
                 });
             }
         };

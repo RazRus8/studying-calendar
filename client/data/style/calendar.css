@@ -52,7 +52,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.2s;
     border-radius: 0.25rem;
     position: relative;
 }
@@ -68,7 +67,7 @@
 {
     background-color: #007bff;
     border: 0.2rem solid #007bff;
-    border-radius: 0.25rem;
+    transition: background-color 0.2s;
     cursor: pointer;
 }
 
@@ -95,24 +94,20 @@
     cursor: pointer;
 }
 
-.active-date::before
+.info
 {
-    visibility: hidden;
     position: absolute;
-    top: 75px;
+    top: 68px;
     z-index: 1;
-}
-
-.active-date:hover::before
-{
-    visibility: visible;
-    content: attr(data-tooltip);
     padding: 10px;
     text-align: left;
     color: white;
-    font-size: 75%;
+    font-size: 80%;
     width: max-content;
+    max-height: 162px;
     background: #666666f6;
     border-radius: 0.25rem;
     white-space: pre-line;
+    overflow-y: auto;
+    cursor: default;
 }
