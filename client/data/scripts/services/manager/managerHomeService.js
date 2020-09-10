@@ -53,17 +53,17 @@
             for (var i = this.firstDayIndex(); i > 0; i--)
             {
                 this.temp = this.prevLastDay - i + 1;
-                this.days += `<div class="prev-date">${this.temp}</div>`;
+                this.days += `<div class="prev-date" data-info="false">${this.temp}</div>`;
             }
 
             for (var j = 1; j <= this.lastDay; j++)
             {
-                this.days += `<div id="${j}" class="cur-date">${j}</div>`;
+                this.days += `<div id="${j}" class="cur-date" data-info="false">${j}</div>`;
             }
 
             for (var k = 1; k <= this.nextDays; k++)
             {
-                this.days += `<div class="next-date">${k}</div>`;
+                this.days += `<div class="next-date" data-info="false">${k}</div>`;
             }
             
             return this.days;

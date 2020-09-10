@@ -153,7 +153,7 @@
                     }
                 });
 
-                element.on("mouseenter", "[data-info]", function(event)
+                element.on("mouseenter", `[data-info="true"]`, function(event)
                 {
                     var elem = angular.element(event.target);
 
@@ -186,7 +186,7 @@
                     }
                 });
 
-                element.on("mouseenter", ".cur-date, .selected-date, .prev-date, .next-date", function()
+                element.on("mouseenter", `[data-info="false"]`, function()
                 {
                     angular.element(document.getElementsByClassName("info")).remove();
                 });
