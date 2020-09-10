@@ -53,7 +53,7 @@
                         {
                             TeacherId: parseInt(this.Id),
                             StudentsGroup: parseInt(this.GroupId),
-                            Lecture: parseInt(this.LectureId),
+                            LectureId: parseInt(this.LectureId),
                             LectureDateTimeStart: new Date(value.year, value.monthIndex, value.day),
                             LectureDateTimeEnd: new Date(value.year, value.monthIndex, value.day)
                         }
@@ -74,7 +74,7 @@
                         {
                             TeacherId: parseInt(this.Id),
                             StudentsGroup: parseInt(this.GroupId),
-                            Lecture: parseInt(this.LectureId),
+                            LectureId: parseInt(this.LectureId),
                             LectureDateTimeStart: new Date(value.year, value.monthIndex, value.day, startHour, startMinutes, 0),
                             LectureDateTimeEnd: new Date(value.year, value.monthIndex, value.day, endHour, endMinutes, 0)
                         }
