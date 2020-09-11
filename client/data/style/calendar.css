@@ -94,7 +94,7 @@
     cursor: pointer;
 }
 
-.info
+/* .info
 {
     position: absolute;
     top: 68px;
@@ -110,4 +110,44 @@
     white-space: pre-line;
     overflow-y: auto;
     cursor: default;
+} */
+
+.info
+{
+    position: absolute;
+    top: 68px;
+    z-index: 1;
+    padding: 10px;
+    text-align: left;
+    color: white;
+    max-height: 162px;
+    background: #666666f6;
+    border-radius: 0.25rem;
+    white-space: pre-line;
+    overflow-y: auto;
+    cursor: default;
+
+    width: max-content;
+}
+
+.info span
+{
+    display: block;
+    font-size: 75%;
+    float: left;
+    width: 85%;
+}
+
+#del
+{
+    margin-top: 3%;
+    float: right;
+    opacity: 0.7;
+    width: 15%;
+}
+
+#del:hover
+{
+    cursor: pointer;
+    opacity: 1;
 }

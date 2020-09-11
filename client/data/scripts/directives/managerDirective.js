@@ -159,7 +159,6 @@
 
                     if (elem.attr("id") !== undefined)
                     {
-                        angular.element(document.getElementsByClassName("info")).remove();
                         var dayInfo = daysInfo[elem.attr("id")];
 
                         var display = "";
@@ -168,8 +167,20 @@
 
                         for (var item of dayInfo)
                         {
+                            var startHour = new Date(item.LectureDateTimeStart).getHours();
+                            var startMinutes = new Date(item.LectureDateTimeStart).getMinutes();
+                            var endHour = new Date(item.LectureDateTimeEnd).getHours();
+                            var endMinutes = new Date(item.LectureDateTimeEnd).getMinutes();
                             --counter;
-                            var info = `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nTeacher: ${item.TeacherFullName}\nLecture start time: ${new Date(item.LectureDateTimeStart).getHours()}:${new Date(item.LectureDateTimeStart).getMinutes()}\nLecture end time: ${new Date(item.LectureDateTimeEnd).getHours()}:${new Date(item.LectureDateTimeEnd).getMinutes()}`;
+
+                            if ((startHour != 0 && endHour != 0) || (startHour == 0 && endHour != 0) || (startHour != 0 && endHour == 0))
+                            {
+                                var info = `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nTeacher: ${item.TeacherFullName}\nLecture start time: ${startHour}:${startMinutes}\nLecture end time: ${endHour}:${endMinutes}`;
+                            }
+                            else
+                            {
+                                var info = `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nTeacher: ${item.TeacherFullName}`;
+                            }
                         
                             if (counter > 0)
                             {
@@ -178,23 +189,25 @@
                             else
                             {
                                 display += `${info}`;
-                            }
-                        
+                            }    
                         }
 
-                        elem.append(`<span class="info">${display}</span>`);
+                        var svg = `<img id="del" src="./data/ExternalLinks/bootstrap-icons-1.0.0-alpha5/trash.svg" alt="" width="19em" height="19em"></img>`
+                        elem.append(`<span class="info"><span>${display}</span>${svg}</span>`);
+
+                        //elem.append(`<span class="info">${display}</span>`);
                     }
                 });
 
-                element.on("mouseenter", `[data-info="false"]`, function()
-                {
-                    angular.element(document.getElementsByClassName("info")).remove();
-                });
+                // element.on("mouseenter", `[data-info="false"]`, function()
+                // {
+                //     angular.element(document.getElementsByClassName("info")).remove();
+                // });
 
-                element.on("mouseleave", function()
-                {
-                    angular.element(document.getElementsByClassName("info")).remove();
-                });
+                // element.on("mouseleave", function()
+                // {
+                //     angular.element(document.getElementsByClassName("info")).remove();
+                // });
             }
         };
     });
