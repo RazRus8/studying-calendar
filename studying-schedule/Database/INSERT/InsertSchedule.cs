@@ -14,6 +14,8 @@ namespace studying_schedule.Database.INSERT
                 {
                     using (AppContext db = new AppContext())
                     {
+                        schedule.DateTimeCreated = DateTime.Now;
+                        
                         db.ScheduleSet.Add(schedule);
                         db.SaveChanges();
                     }

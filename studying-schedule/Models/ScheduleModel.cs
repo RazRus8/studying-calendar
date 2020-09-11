@@ -42,5 +42,8 @@ namespace studying_schedule.Models
                 lectureDateTimeEnd = value.ToLocalTime();
             }
         }
+
+        [Column("dateTimeCreated")]
+        public DateTime DateTimeCreated { get; set; }
     }
 }
