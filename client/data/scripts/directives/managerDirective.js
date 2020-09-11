@@ -159,20 +159,23 @@
 
                     if (elem.attr("id") !== undefined)
                     {
+                        angular.element(document.getElementsByClassName("info")).remove();
                         var dayInfo = daysInfo[elem.attr("id")];
-
                         var display = "";
-
                         var counter = dayInfo.length;
+
+                        elem.append(`<span class="info"></span>`);
 
                         for (var item of dayInfo)
                         {
-                            var startHour = new Date(item.LectureDateTimeStart).getHours();
-                            var startMinutes = new Date(item.LectureDateTimeStart).getMinutes();
-                            var endHour = new Date(item.LectureDateTimeEnd).getHours();
-                            var endMinutes = new Date(item.LectureDateTimeEnd).getMinutes();
+                            var dts = new Date(item.LectureDateTimeStart);
+                            var dte = new Date(item.LectureDateTimeEnd);
+                            var startHour = dts.getHours();
+                            var startMinutes = (dts.getMinutes() < 10 ? "0" : "") + dts.getMinutes();
+                            var endHour = dte.getHours();
+                            var endMinutes = (dte.getMinutes() < 10 ? "0" : "") + dte.getMinutes();
                             --counter;
-
+                            
                             if ((startHour != 0 && endHour != 0) || (startHour == 0 && endHour != 0) || (startHour != 0 && endHour == 0))
                             {
                                 var info = `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nTeacher: ${item.TeacherFullName}\nLecture start time: ${startHour}:${startMinutes}\nLecture end time: ${endHour}:${endMinutes}`;
@@ -181,33 +184,31 @@
                             {
                                 var info = `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nTeacher: ${item.TeacherFullName}`;
                             }
-                        
+                            
                             if (counter > 0)
                             {
-                                display += `${info}\n-------------------------\n`;
+                                display = `${info}\n-------------------------\n`;
                             }
                             else
                             {
-                                display += `${info}`;
-                            }    
+                                display = `${info}`;
+                            }
+                            
+                            var svg = `<img id="del" src="./data/ExternalLinks/bootstrap-icons-1.0.0-alpha5/trash.svg" alt="" width="19em" height="19em"></img>`;
+                            elem.children().append(`<span class="info-block"><span class="info-text">${display}</span>${svg}</span>`);
                         }
-
-                        var svg = `<img id="del" src="./data/ExternalLinks/bootstrap-icons-1.0.0-alpha5/trash.svg" alt="" width="19em" height="19em"></img>`
-                        elem.append(`<span class="info"><span>${display}</span>${svg}</span>`);
-
-                        //elem.append(`<span class="info">${display}</span>`);
                     }
                 });
 
-                // element.on("mouseenter", `[data-info="false"]`, function()
-                // {
-                //     angular.element(document.getElementsByClassName("info")).remove();
-                // });
+                element.on("mouseenter", `[data-info="false"]`, function()
+                {
+                    angular.element(document.getElementsByClassName("info")).remove();
+                });
 
-                // element.on("mouseleave", function()
-                // {
-                //     angular.element(document.getElementsByClassName("info")).remove();
-                // });
+                element.on("mouseleave", function()
+                {
+                    angular.element(document.getElementsByClassName("info")).remove();
+                });
             }
         };
     });
