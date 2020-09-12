@@ -44,7 +44,7 @@
     align-items: center;
 }
 
-.days div
+.days>div
 {
     margin: 1%;
     font-size: 1.3em;
@@ -121,13 +121,11 @@
 
 .info-text
 {
-    display: block;
     font-size: 75%;
 }
 
 #del
 {
-    display: block;
     margin-top: 3%;
     opacity: 0.5;
 }
