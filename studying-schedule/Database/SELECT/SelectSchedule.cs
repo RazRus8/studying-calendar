@@ -79,6 +79,7 @@ namespace studying_schedule.Database.SELECT
 
                         var schedule = new FullScheduleModel
                         {
+                            Id = model.Id,
                             TeacherFullName = fullName,
                             StudentsGroupName = group,
                             LectureName = lecture,
