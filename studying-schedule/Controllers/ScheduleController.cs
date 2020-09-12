@@ -7,6 +7,7 @@ using studying_schedule.Models;
 using studying_schedule.Models.Info;
 using studying_schedule.Database.SELECT;
 using studying_schedule.Database.INSERT;
+using studying_schedule.Database.DELETE;
 
 namespace studying_schedule.Controllers
 {
@@ -72,6 +73,28 @@ namespace studying_schedule.Controllers
                 {
                     Content = JsonSerializer.Serialize(fullSchedule),
                     ContentType = "application/json",
+                    StatusCode = (int)HttpStatusCode.OK
+                };
+            }
+            else
+            {
+                return new ContentResult
+                {
+                    StatusCode = (int)HttpStatusCode.InternalServerError
+                };
+            }
+        }
+
+        [Route("api/deleteschedule")]
+        [HttpPost]
+        public ContentResult DelSchedule(ScheduleModel schedule)
+        {
+            bool deleted = DeleteSchedule.Delete(schedule);
+
+            if (deleted)
+            {
+                return new ContentResult
+                {
                     StatusCode = (int)HttpStatusCode.OK
                 };
             }
