@@ -30,7 +30,7 @@
         this.groups = managerGroupService.getAllGroups();
         
         // lectures for select element
-        this.lectures = managerLectureService.getLectures();
+        this.lectures = managerLectureService.getAllLectures();
 
         // teachers for select element
         this.teachers = managerHomeService.getTeachers();
