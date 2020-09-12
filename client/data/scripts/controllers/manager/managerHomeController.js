@@ -27,7 +27,7 @@
         navbarService.setTab5("tab5");
 
         // groups for select element
-        this.groups = managerGroupService.getGroups();
+        this.groups = managerGroupService.getAllGroups();
         
         // lectures for select element
         this.lectures = managerLectureService.getLectures();
