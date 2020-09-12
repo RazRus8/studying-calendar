@@ -91,8 +91,6 @@
             {
                 console.log(`Response status: ${value.status}`);
 
-                console.log($scope.monthYear);
-
                 if (value.status == 200)
                 {
                     $route.reload();
