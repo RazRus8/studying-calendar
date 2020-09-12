@@ -35,10 +35,25 @@ namespace studying_schedule.Controllers
             }
         }
 
+        [Route("api/getallgroups")]
+        [HttpGet]
+        public ContentResult GetAllGroups()
+        {
+            var groups = SelectGroup.SelectAll();
+
+            return new ContentResult
+            {
+                Content = JsonSerializer.Serialize(groups),
+                ContentType = "application/json",
+                StatusCode = (int)HttpStatusCode.OK
+            };
+        }
+
         [Route("api/getgroups")]
         [HttpGet]
         public ContentResult GetGroups()
         {
+            // select groups unused in schedule
             var groups = SelectGroup.SelectAvailable();
 
             return new ContentResult
