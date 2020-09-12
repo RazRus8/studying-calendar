@@ -25,6 +25,34 @@
             return deferred.promise;
         }
 
+        this.getAllLectures = function()
+        {
+            var deferred = $q.defer();
+            var lectures = {};
+
+            $http({
+                method: "GET",
+                url: "http://localhost:50157/api/getalllectures"
+            })
+            .then(function success(response)
+            {
+                deferred.resolve(response);
+            },
+            function error(response)
+            {
+                deferred.reject(response);
+            });
+
+            var promiseObj = deferred.promise;
+            
+            promiseObj.then(function(value)
+            {
+                lectures["lectures"] = value.data;
+            });
+
+            return lectures;
+        }
+
         this.getLectures = function()
         {
             var deferred = $q.defer();
