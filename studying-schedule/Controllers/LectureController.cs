@@ -35,11 +35,26 @@ namespace studying_schedule.Controllers
             }
         }
 
+        [Route("api/getalllectures")]
+        [HttpGet]
+        public ContentResult GetAllLectures()
+        {
+            var lectures = SelectLecture.SelectAll();
+
+            return new ContentResult
+            {
+                Content = JsonSerializer.Serialize(lectures),
+                ContentType = "application/json",
+                StatusCode = (int)HttpStatusCode.OK
+            };
+        }
+
         [Route("api/getlectures")]
         [HttpGet]
         public ContentResult GetLectures()
         {
-            var lectures = SelectLecture.SelectAll();
+            // select lectures unused in schedule
+            var lectures = SelectLecture.SelectAvailable();
 
             return new ContentResult
             {
