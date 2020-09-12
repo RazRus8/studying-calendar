@@ -4,6 +4,7 @@
 
     app.directive("managerDirective", function(managerHomeService)
     {
+        // returns array with data from server and mark days with info
         function getSchedule(param)
         {
             var daysInfo = {};
@@ -58,6 +59,7 @@
 
                 // load schedule from server
                 var daysInfo = getSchedule(scope.monthYear);
+                var dayInfo = [];
 
                 function setDaysMonth(date)
                 {
@@ -161,7 +163,7 @@
                     if (elem.attr("id") !== undefined && (elem[0].className == "active-date" || elem[0].className == "selected-date"))
                     {
                         angular.element(document.getElementsByClassName("info")).remove();
-                        var dayInfo = daysInfo[elem.attr("id")];
+                        dayInfo = daysInfo[elem.attr("id")];
                         var counter = dayInfo.length;
 
                         elem.append(`<div class="info"></div>`);
@@ -213,13 +215,33 @@
                 {
                     var sel = angular.element(event.target).parent();
                     var id = {Id: parseInt(sel.attr("data-id"))};
+                    var day;
                     sel.remove();
-                    
+
+                    for (var item of dayInfo)
+                    {
+                        day = parseInt(new Date(item.LectureDateTimeStart).getDate());
+
+                        if (item.Id == id.Id)
+                        {
+                            var index = dayInfo.indexOf(item);
+                            dayInfo.splice(index, 1);
+                        }
+                    }
+
+
+                    if (dayInfo.length == 0)
+                    {
+                        var elem = angular.element(document.getElementById(day));
+                        elem.removeClass("active-date").addClass("cur-date");
+                        elem.attr("data-info", "false");
+                    }
+
                     var promiseObj = managerHomeService.deleteSchedule(id);
 
                     promiseObj.then(function(value)
                     {
-                        console.log(value.status);
+                        console.log(`Response status: ${value.status}`);
                     });
                 });
             }
