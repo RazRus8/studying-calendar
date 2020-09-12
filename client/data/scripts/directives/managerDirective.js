@@ -164,7 +164,7 @@
                         var display = "";
                         var counter = dayInfo.length;
 
-                        elem.append(`<span class="info"></span>`);
+                        elem.append(`<div class="info"></div>`);
 
                         for (var item of dayInfo)
                         {
@@ -174,6 +174,7 @@
                             var startMinutes = (dts.getMinutes() < 10 ? "0" : "") + dts.getMinutes();
                             var endHour = dte.getHours();
                             var endMinutes = (dte.getMinutes() < 10 ? "0" : "") + dte.getMinutes();
+                            var svg = `<img id="del" src="./data/ExternalLinks/bootstrap-icons-1.0.0-alpha5/trash.svg" alt="" width="19em" height="19em"></img>`;
                             --counter;
                             
                             if ((startHour != 0 && endHour != 0) || (startHour == 0 && endHour != 0) || (startHour != 0 && endHour == 0))
@@ -187,15 +188,12 @@
                             
                             if (counter > 0)
                             {
-                                display = `${info}\n-------------------------\n`;
+                                elem.children().append(`<div class="info-block" style="margin-bottom: 4%;"><div class="info-text">${info}</div>${svg}</div>`);
                             }
                             else
                             {
-                                display = `${info}`;
+                                elem.children().append(`<div class="info-block"><div class="info-text">${info}</div>${svg}</div>`);
                             }
-                            
-                            var svg = `<img id="del" src="./data/ExternalLinks/bootstrap-icons-1.0.0-alpha5/trash.svg" alt="" width="19em" height="19em"></img>`;
-                            elem.children().append(`<span class="info-block"><span class="info-text">${display}</span>${svg}</span>`);
                         }
                     }
                 });
