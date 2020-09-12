@@ -91,6 +91,18 @@
     right: 2em;
 }
 
+/* disable bottom margin for note close place to select */
+.no-margin-bottom
+{
+    margin-bottom: 0px;
+}
+
+/* note font size of groups and lectures manager pages  */
+.note
+{
+    font-size: 90%;
+}
+
 ::-webkit-scrollbar
 {
     width: 5px;
