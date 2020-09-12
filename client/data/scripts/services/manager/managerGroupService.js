@@ -25,6 +25,34 @@
             return deferred.promise;
         }
 
+        this.getAllGroups = function()
+        {
+            var deferred = $q.defer();
+            var groups = {};
+
+            $http({
+                method: "GET",
+                url: "http://localhost:50157/api/getallgroups"
+            })
+            .then(function success(response)
+            {
+                deferred.resolve(response);
+            },
+            function error(response)
+            {
+                deferred.reject(response);
+            });
+
+            var promiseObj = deferred.promise;
+            
+            promiseObj.then(function(value)
+            {
+                groups["groups"] = value.data;
+            });
+
+            return groups;
+        }
+
         this.getGroups = function()
         {
             var deferred = $q.defer();
