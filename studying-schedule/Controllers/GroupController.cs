@@ -39,7 +39,7 @@ namespace studying_schedule.Controllers
         [HttpGet]
         public ContentResult GetGroups()
         {
-            var groups = SelectGroup.SelectAll();
+            var groups = SelectGroup.SelectAvailable();
 
             return new ContentResult
             {
