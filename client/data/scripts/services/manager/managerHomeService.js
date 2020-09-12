@@ -151,5 +151,26 @@
 
             return deferred.promise;
         }
+
+        this.deleteSchedule = function(id)
+        {
+            var deferred = $q.defer();
+
+            $http({
+                method: "POST",
+                data: id,
+                url: "http://localhost:50157/api/deleteschedule"
+            })
+            .then(function success(response)
+            {
+                deferred.resolve(response);
+            },
+            function error(response)
+            {
+                deferred.reject(response);
+            });
+
+            return deferred.promise;
+        }
     });
 }());

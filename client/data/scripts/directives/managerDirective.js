@@ -2,7 +2,7 @@
 {
     "use strict";
 
-    app.directive("managerDirective", function(managerHomeService, $timeout)
+    app.directive("managerDirective", function(managerHomeService)
     {
         function getSchedule(param)
         {
@@ -156,18 +156,19 @@
                 element.on("mouseenter", `[data-info="true"]`, function(event)
                 {
                     var elem = angular.element(event.target);
-
-                    if (elem.attr("id") !== undefined)
+                    
+                    // works only for active date buttons
+                    if (elem.attr("id") !== undefined && (elem[0].className == "active-date" || elem[0].className == "selected-date"))
                     {
                         angular.element(document.getElementsByClassName("info")).remove();
                         var dayInfo = daysInfo[elem.attr("id")];
-                        var display = "";
                         var counter = dayInfo.length;
 
                         elem.append(`<div class="info"></div>`);
 
                         for (var item of dayInfo)
                         {
+                            var id = item.Id;
                             var dts = new Date(item.LectureDateTimeStart);
                             var dte = new Date(item.LectureDateTimeEnd);
                             var startHour = dts.getHours();
@@ -188,11 +189,11 @@
                             
                             if (counter > 0)
                             {
-                                elem.children().append(`<div class="info-block" style="margin-bottom: 4%;"><div class="info-text">${info}</div>${svg}</div>`);
+                                elem.children().append(`<div data-id="${id}" class="info-block" style="margin-bottom: 4%;"><div class="info-text">${info}</div>${svg}</div>`);
                             }
                             else
                             {
-                                elem.children().append(`<div class="info-block"><div class="info-text">${info}</div>${svg}</div>`);
+                                elem.children().append(`<div data-id="${id}" class="info-block"><div class="info-text">${info}</div>${svg}</div>`);
                             }
                         }
                     }
@@ -206,6 +207,20 @@
                 element.on("mouseleave", function()
                 {
                     angular.element(document.getElementsByClassName("info")).remove();
+                });
+
+                element.on("click", "#del", function(event)
+                {
+                    var sel = angular.element(event.target).parent();
+                    var id = {Id: parseInt(sel.attr("data-id"))};
+                    sel.remove();
+                    
+                    var promiseObj = managerHomeService.deleteSchedule(id);
+
+                    promiseObj.then(function(value)
+                    {
+                        console.log(value.status);
+                    });
                 });
             }
         };
