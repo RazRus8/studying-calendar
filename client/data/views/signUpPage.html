@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
             <label>Account type</label>
-            <select class="form-control" ng-model="suCtrl.data.select">
+            <select class="form-control" ng-model="suCtrl.data.selected" required>
                 <option value="">Select type</option>
                 <option value="1">Student</option>
                 <option value="2">Teacher</option>
@@ -20,19 +20,19 @@
         </div>
         <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control" ng-model="suCtrl.email">
+            <input type="email" class="form-control" ng-model="suCtrl.email" required>
         </div>
         <div class="form-group">
             <label>First Name</label>
-            <input type="text" class="form-control" ng-model="suCtrl.firstName">
+            <input type="text" class="form-control" ng-model="suCtrl.firstName" required>
         </div>
         <div class="form-group">
             <label>Last Name</label>
-            <input type="text" class="form-control" ng-model="suCtrl.lastName">
+            <input type="text" class="form-control" ng-model="suCtrl.lastName" required>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" ng-model="suCtrl.password">
+            <input id="sign-up-password" type="password" class="form-control" ng-model="suCtrl.password" required>
         </div>
         <button type="submit" class="btn btn-primary mt-2" ng-click="suCtrl.signUp()">Create account</button>
     </form>

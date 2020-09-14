@@ -7,7 +7,7 @@
             <label>Lecture name</label>
             <div class="form-row">
                 <div class="col-10">
-                    <input type="text" class="form-control" ng-model="manCtrl.lecture">
+                    <input type="text" class="form-control" ng-model="manCtrl.lecture" required>
                 </div>
                 <div class="col-2">
                     <button type="submit" class="btn btn-primary" ng-click="manCtrl.createLecture()">Create</button>
@@ -23,7 +23,7 @@
             <label>Lecture name</label>
             <div class="form-row">
                 <div class="col-10">
-                    <select class="form-control" ng-model="manCtrl.selectedLecture" ng-options="lecture.LectureId as lecture.LectureName for lecture in manCtrl.lectures.lectures | orderBy : 'LectureName'">
+                    <select class="form-control" ng-model="manCtrl.selectedLecture" ng-options="lecture.LectureId as lecture.LectureName for lecture in manCtrl.lectures.lectures | orderBy : 'LectureName'" required>
                         <option value="">Select lecture</option>
                     </select>
                 </div>

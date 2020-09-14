@@ -4,21 +4,20 @@
             <form class="container">
                 <div class="form-group">
                     <label>Group</label>
-                    <select class="form-control" ng-model="manCtrl.selectedGroup" ng-options="group.GroupId as group.GroupName for group in manCtrl.groups.groups | orderBy : 'GroupName'">
+                    <select class="form-control" ng-model="manCtrl.selectedGroup" ng-options="group.GroupId as group.GroupName for group in manCtrl.groups.groups | orderBy : 'GroupName'" required>
                         <option value="">Select group</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Lecture</label>
-                    <select class="form-control" ng-model="manCtrl.selectedLecture" ng-options="lecture.LectureId as lecture.LectureName for lecture in manCtrl.lectures.lectures | orderBy : 'LectureName'">
+                    <select class="form-control" ng-model="manCtrl.selectedLecture" ng-options="lecture.LectureId as lecture.LectureName for lecture in manCtrl.lectures.lectures | orderBy : 'LectureName'" required>
                         <option value="">Select lecture</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Teacher</label>
-                    <select class="form-control" ng-model="manCtrl.selectedTeacher" ng-options="teacher.Id as teacher.FullName for teacher in manCtrl.teachers.teachers | orderBy : 'FullName'">
+                    <select class="form-control" ng-model="manCtrl.selectedTeacher" ng-options="teacher.Id as teacher.FullName for teacher in manCtrl.teachers.teachers | orderBy : 'FullName'" required>
                         <option value="">Select teacher</option>
-                        <!-- <option ng-repeat="teacher in manCtrl.teachers.teachers" value="{{teacher.Id}}">{{teacher.FirstName + " " + teacher.LastName}}</option> -->
                     </select>
                 </div>
                 <div class="form-group">

@@ -7,7 +7,7 @@
             <label>Group name</label>
             <div class="form-row">
                 <div class="col-10">
-                    <input type="text" class="form-control" ng-model="manCtrl.group">
+                    <input type="text" class="form-control" ng-model="manCtrl.group" required>
                 </div>
                 <div class="col-2">
                     <button type="submit" class="btn btn-primary" ng-click="manCtrl.createGroup()">Create</button>
@@ -23,7 +23,7 @@
             <label>Group name</label>
             <div class="form-row">
                 <div class="col-10">
-                    <select class="form-control" ng-model="manCtrl.selectedGroup" ng-options="group.GroupId as group.GroupName for group in manCtrl.groups.groups | orderBy : 'GroupName'">
+                    <select class="form-control" ng-model="manCtrl.selectedGroup" ng-options="group.GroupId as group.GroupName for group in manCtrl.groups.groups | orderBy : 'GroupName'" required>
                         <option value="">Select group</option>
                     </select>
                 </div>

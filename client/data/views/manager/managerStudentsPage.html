@@ -6,13 +6,13 @@
             </div>
             <div class="form-group">
                 <label>Group name</label>
-                <select class="form-control" ng-model="manCtrl.selectedGroupAdd" ng-options="group.GroupId as group.GroupName for group in manCtrl.groupsAdd.groups | orderBy : 'GroupName'">
+                <select class="form-control" ng-model="manCtrl.selectedGroupAdd" ng-options="group.GroupId as group.GroupName for group in manCtrl.groupsAdd.groups | orderBy : 'GroupName'" required>
                     <option value="">Select group</option>
                 </select>
             </div>
             <div class="form-group no-margin-bottom">
                 <label>Student</label>
-                <select class="form-control" ng-model="manCtrl.selectedStudentAdd" ng-options="student.Id as student.FullName for student in manCtrl.studentsAdd.students | orderBy : 'FullName'">
+                <select class="form-control" ng-model="manCtrl.selectedStudentAdd" ng-options="student.Id as student.FullName for student in manCtrl.studentsAdd.students | orderBy : 'FullName'" required>
                     <option value="">Select student</option>
                 </select>
             </div>
