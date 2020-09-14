@@ -18,42 +18,43 @@
 
         this.signIn = function()
         {
-            var user =
+            if (this.email !== undefined && this.password !== undefined)
             {
-                Email: this.email,
-                Password: this.password
-            }
-            
-            console.log(user);
-            
-            var promiseObj = signInService.signIn(user);
-
-            // for reading status of promise
-            promiseObj.then(function(value)
-            {
-                console.log("Response status: ", value.status);
-
-                if (value.status == 200 && value.data.Role == 1)
+                var user =
                 {
-                    console.log("User role: student.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
-                    userService.setUser(value.data.Id);
-                    $location.url("/home/student/" + value.data.Id);
-                }
-                else if (value.status == 200 && value.data.Role == 2)
-                {
-                    console.log("User role: teacher.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
-                    userService.setUser(value.data.Id);
-                    $location.url("/home/teacher/" + value.data.Id);
-                }
-                else if (value.status == 200 && value.data.Role == 3)
-                {
-                    console.log("User role: manager.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
-                    userService.setUser(value.data.Id);
-                    $location.url("/home/manager");
+                    Email: this.email,
+                    Password: this.password
                 }
                 
-                // to do handle 404 status
-            });
+                console.log(user);
+                
+                var promiseObj = signInService.signIn(user);
+    
+                // for reading status of promise
+                promiseObj.then(function(value)
+                {
+                    console.log("Response status: ", value.status);
+    
+                    if (value.status == 200 && value.data.Role == 1)
+                    {
+                        console.log("User role: student.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
+                        userService.setUser(value.data.Id);
+                        $location.url("/home/student/" + value.data.Id);
+                    }
+                    else if (value.status == 200 && value.data.Role == 2)
+                    {
+                        console.log("User role: teacher.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
+                        userService.setUser(value.data.Id);
+                        $location.url("/home/teacher/" + value.data.Id);
+                    }
+                    else if (value.status == 200 && value.data.Role == 3)
+                    {
+                        console.log("User role: manager.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
+                        userService.setUser(value.data.Id);
+                        $location.url("/home/manager");
+                    }
+                });
+            }
         }
     });
 }());
