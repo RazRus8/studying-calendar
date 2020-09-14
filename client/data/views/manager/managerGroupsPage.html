@@ -23,9 +23,8 @@
             <label>Group name</label>
             <div class="form-row">
                 <div class="col-10">
-                    <select class="form-control" ng-model="manCtrl.value">
+                    <select class="form-control" ng-model="manCtrl.selectedGroup" ng-options="group.GroupId as group.GroupName for group in manCtrl.groups.groups | orderBy : 'GroupName'">
                         <option value="">Select group</option>
-                        <option ng-repeat="group in manCtrl.groups.groups" value="{{group.GroupId}}">{{group.GroupName}}</option>
                     </select>
                 </div>
                 <div class="col-2">

@@ -23,9 +23,8 @@
             <label>Lecture name</label>
             <div class="form-row">
                 <div class="col-10">
-                    <select class="form-control" ng-model="manCtrl.value">
+                    <select class="form-control" ng-model="manCtrl.selectedLecture" ng-options="lecture.LectureId as lecture.LectureName for lecture in manCtrl.lectures.lectures | orderBy : 'LectureName'">
                         <option value="">Select lecture</option>
-                        <option ng-repeat="lecture in manCtrl.lectures.lectures" value="{{lecture.LectureId}}">{{lecture.LectureName}}</option>
                     </select>
                 </div>
                 <div class="col-2">
