@@ -38,15 +38,15 @@
                     Password: this.oldPassword1
                 }
 
-                if (check(this.oldPassword1))
+                if (whiteSpaceCheck(this.oldPassword1))
                 {
                     oldpass1.setCustomValidity(messages[2]);
                 }
-                else if (check(this.oldPassword2))
+                else if (whiteSpaceCheck(this.oldPassword2))
                 {
                     oldpass2.setCustomValidity(messages[2]);
                 }
-                else if (check(this.newPassword))
+                else if (whiteSpaceCheck(this.newPassword))
                 {
                     newpass.setCustomValidity(messages[2]);
                 }
@@ -77,7 +77,7 @@
             }
         }
 
-        var check = function(string)
+        var whiteSpaceCheck = function(string)
         {
             if (string.indexOf(" ") >= 0)
             {
