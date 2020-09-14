@@ -15,9 +15,6 @@
         // set class for position of datetime in navbar
         navbarService.setClass("mr-3");
 
-        // set select for hours and minutes
-        this.time = managerSelectService.setTime();
-
         // set active tab
         navbarService.setTab1("tab1");
         navbarService.setTab2("tab2");
