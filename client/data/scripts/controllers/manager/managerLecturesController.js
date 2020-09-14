@@ -25,46 +25,52 @@
         // add new lecture to the db
         this.createLecture = function()
         {
-            var newLecture = 
+            if (this.lecture != "" && this.lecture !== undefined)
             {
-                LectureName: this.lecture
-            }
-
-            console.log(newLecture);
-
-            var promiseObj = managerLectureService.createLecture(newLecture);
-
-            promiseObj.then(function(value)
-            {
-                console.log("Response status: ", value.status);
-
-                if (value.status == 200)
+                var newLecture = 
                 {
-                    $route.reload();
+                    LectureName: this.lecture
                 }
-            });
+    
+                console.log(newLecture);
+    
+                var promiseObj = managerLectureService.createLecture(newLecture);
+    
+                promiseObj.then(function(value)
+                {
+                    console.log("Response status: ", value.status);
+    
+                    if (value.status == 200)
+                    {
+                        $route.reload();
+                    }
+                });
+            }
         }
 
         // available lectures for select elements
         this.lectures = managerLectureService.getLectures();
+        this.selectedLecture = this.lectures.lectures;
 
         // delete selected lecture from the db
         this.deleteLecture = function()
         {
-            var id = parseInt(this.value);
-            var lecture = {LectureId: id};
-
-            var promiseObj = managerLectureService.deleteLecture(lecture);  
-
-            promiseObj.then(function(value)
+            if (this.selectedLecture != null)
             {
-                console.log("Response status: ", value.status);
-
-                if (value.status == 200)
+                var lecture = {LectureId: parseInt(this.selectedLecture)};
+    
+                var promiseObj = managerLectureService.deleteLecture(lecture);  
+    
+                promiseObj.then(function(value)
                 {
-                    $route.reload();
-                }
-            });
+                    console.log("Response status: ", value.status);
+    
+                    if (value.status == 200)
+                    {
+                        $route.reload();
+                    }
+                });
+            }
         }
     });
 }());
