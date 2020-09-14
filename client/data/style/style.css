@@ -103,22 +103,8 @@
     font-size: 90%;
 }
 
-::-webkit-scrollbar
+li>#del
 {
-    width: 5px;
-}
-
-::-webkit-scrollbar-track
-{
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb
-{
-    background: #888;
-}
-
-::-webkit-scrollbar-thumb
-{
-    background: #555;
+    float: right;
+    margin-top: 4px;
 }
