@@ -35,9 +35,14 @@
         // teachers for select element
         this.teachers = managerHomeService.getTeachers();
 
+        // variables for ng-models
+        this.selectedGroup = this.groups.groups;
+        this.selectedLecture = this.lectures.lectures;
+        this.selectedTeacher= this.teachers.teachers;
+
         this.createSchedule = function()
         {
-            //object of day, months, years of selected
+            //object of day, months, years of selected from calendar
             var daysMonthsYears = $scope.daysMonthsYearsOfSelected;
             var schedules = [];
 
@@ -51,9 +56,9 @@
                     {
                         var schedule = 
                         {
-                            TeacherId: parseInt(this.Id),
-                            StudentsGroup: parseInt(this.GroupId),
-                            LectureId: parseInt(this.LectureId),
+                            TeacherId: parseInt(this.selectedTeacher),
+                            StudentsGroup: parseInt(this.selectedGroup),
+                            LectureId: parseInt(this.selectedLecture),
                             LectureDateTimeStart: new Date(value.year, value.monthIndex, value.day),
                             LectureDateTimeEnd: new Date(value.year, value.monthIndex, value.day)
                         }
@@ -72,9 +77,9 @@
                     {
                         var schedule = 
                         {
-                            TeacherId: parseInt(this.Id),
-                            StudentsGroup: parseInt(this.GroupId),
-                            LectureId: parseInt(this.LectureId),
+                            TeacherId: parseInt(this.selectedTeacher),
+                            StudentsGroup: parseInt(this.selectedGroup),
+                            LectureId: parseInt(this.selectedLecture),
                             LectureDateTimeStart: new Date(value.year, value.monthIndex, value.day, startHour, startMinutes, 0),
                             LectureDateTimeEnd: new Date(value.year, value.monthIndex, value.day, endHour, endMinutes, 0)
                         }
