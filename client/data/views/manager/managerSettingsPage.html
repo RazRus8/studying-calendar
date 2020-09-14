@@ -5,16 +5,16 @@
         </div>
         <div class="form-group mt-3">
             <label>Enter old password</label>
-            <input type="password" class="form-control">
+            <input id="old-pass-1" type="password" class="form-control" ng-model="manCtrl.oldPassword1" required>
         </div>
         <div class="form-group">
             <label>Enter old password once again</label>
-            <input type="password" class="form-control">
+            <input id="old-pass-2" type="password" class="form-control" ng-model="manCtrl.oldPassword2" required>
         </div>
         <div class="form-group">
             <label>Enter new password</label>
-            <input type="password" class="form-control">
+            <input id="new-pass" type="password" class="form-control" ng-model="manCtrl.newPassword" required>
         </div>
-        <button type="submit" class="btn btn-primary">Change password</button>
+        <button type="submit" class="btn btn-primary" ng-click="manCtrl.changePassword()">Change password</button>
     </form>
 </div>
