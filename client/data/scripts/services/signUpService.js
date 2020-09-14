@@ -18,10 +18,10 @@
             .then(function success(response)
             {
                 deferred.resolve(response);
-            },
-            function error(response)
+            })
+            .catch(function error(response)
             {
-                deferred.reject(response);
+                deferred.resolve(response);
             });
 
             return deferred.promise;
