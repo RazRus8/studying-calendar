@@ -46,7 +46,7 @@
             var daysMonthsYears = $scope.daysMonthsYearsOfSelected;
             var schedules = [];
 
-            if (daysMonthsYears !== undefined)
+            if (daysMonthsYears !== undefined && this.selectedGroup !== undefined && this.selectedLecture !== undefined && this.selectedTeacher !== undefined)
             {
                 var values = Object.values(daysMonthsYears);
 
@@ -87,20 +87,20 @@
                         schedules.push(schedule);
                     }
                 }
+                
+                var promiseObj = managerHomeService.setSchedule(schedules);
+    
+                promiseObj.then(function(value)
+                {
+                    console.log(`Response status: ${value.status}`);
+    
+                    if (value.status == 200)
+                    {
+                        $route.reload();
+                    }
+                });
             }
 
-            console.log(schedules);
-            var promiseObj = managerHomeService.setSchedule(schedules);
-
-            promiseObj.then(function(value)
-            {
-                console.log(`Response status: ${value.status}`);
-
-                if (value.status == 200)
-                {
-                    $route.reload();
-                }
-            });
         }
     });
 }());
