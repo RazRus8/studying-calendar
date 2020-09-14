@@ -135,3 +135,25 @@
     cursor: pointer;
     opacity: 1;
 }
+
+
+/* scrollbar style for calendar info */
+.calendar ::-webkit-scrollbar
+{
+    width: 5px;
+}
+
+.calendar ::-webkit-scrollbar-track
+{
+    background: #f1f1f1;
+}
+
+.calendar ::-webkit-scrollbar-thumb
+{
+    background: #888;
+}
+
+.calendar ::-webkit-scrollbar-thumb
+{
+    background: #555;
+}
