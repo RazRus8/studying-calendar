@@ -53,6 +53,10 @@
                         userService.setUser(value.data.Id);
                         $location.url("/home/manager");
                     }
+                    else if (value.status != 200)
+                    {
+                        alert("Wrong email or password.");
+                    }
                 });
             }
         }
