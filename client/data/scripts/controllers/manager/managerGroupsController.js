@@ -25,46 +25,52 @@
         // add new group to the db
         this.createGroup = function()
         {
-            var newGroup = 
+            if (this.group != "" && this.group !== undefined)
             {
-                GroupName: this.group
-            }
-
-            console.log(newGroup);
-
-            var promiseObj = managerGroupService.createGroup(newGroup);
-
-            promiseObj.then(function(value)
-            {
-                console.log("Response status: ", value.status);
-
-                if (value.status == 200)
+                var newGroup = 
                 {
-                    $route.reload();
+                    GroupName: this.group
                 }
-            });
+    
+                console.log(newGroup);
+    
+                var promiseObj = managerGroupService.createGroup(newGroup);
+    
+                promiseObj.then(function(value)
+                {
+                    console.log("Response status: ", value.status);
+    
+                    if (value.status == 200)
+                    {
+                        $route.reload();
+                    }
+                });
+            }
         }
 
         // available groups for select elements
         this.groups = managerGroupService.getGroups();
+        this.selectedGroup = this.groups.groups;
 
         // delete selected group from the db
         this.deleteGroup = function()
         {
-            var id = parseInt(this.value);
-            var group = {GroupId: id};
-
-            var promiseObj = managerGroupService.deleteGroup(group);
-
-            promiseObj.then(function(value)
+            if (this.selectedGroup != null)
             {
-                console.log("Response status: ", value.status);
-
-                if (value.status == 200)
+                var group = {GroupId: parseInt(this.selectedGroup)};
+    
+                var promiseObj = managerGroupService.deleteGroup(group);
+    
+                promiseObj.then(function(value)
                 {
-                    $route.reload();
-                }
-            });
+                    console.log("Response status: ", value.status);
+    
+                    if (value.status == 200)
+                    {
+                        $route.reload();
+                    }
+                });
+            }
         }
     });
 }());
