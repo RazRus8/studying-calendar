@@ -34,16 +34,35 @@ namespace studying_schedule.Database.SELECT
             {
                 using (AppContext db = new AppContext())
                 {
-                    var groupId = db.StudentsGroupsSet.Where(g => g.StudentId == user.UserId).Select(g => g.GroupId).FirstOrDefault();
-                    
-                    if (groupId != 0)
-                    {
-                        var schedules = db.ScheduleSet.Where(year => year.LectureDateTimeStart.Year == user.Year)
-                                                      .Where(month => month.LectureDateTimeStart.Month == user.Month)
-                                                      .Where(g => g.StudentsGroup == groupId)
-                                                      .ToList();
+                    bool exist = db.UsersSet.Any(u => u.Id == user.UserId);
 
-                        return Convert(schedules);
+                    if (exist)
+                    {
+                        int role = db.UsersSet.Where(u => u.Id == user.UserId).Select(r => r.Role).First();
+
+                        if (role == 1)
+                        {
+                            var groupId = db.StudentsGroupsSet.Where(g => g.StudentId == user.UserId).Select(g => g.GroupId).FirstOrDefault();
+                    
+                            if (groupId != 0)
+                            {
+                                var schedules = db.ScheduleSet.Where(year => year.LectureDateTimeStart.Year == user.Year)
+                                                              .Where(month => month.LectureDateTimeStart.Month == user.Month)
+                                                              .Where(g => g.StudentsGroup == groupId)
+                                                              .ToList();
+
+                                return Convert(schedules);
+                            }
+                        }
+                        else
+                        {
+                            var schedules = db.ScheduleSet.Where(year => year.LectureDateTimeStart.Year == user.Year)
+                                                          .Where(month => month.LectureDateTimeStart.Month == user.Month)
+                                                          .Where(u => u.TeacherId == user.UserId)
+                                                          .ToList();
+
+                            return Convert(schedules);
+                        }
                     }
 
                     return null;
