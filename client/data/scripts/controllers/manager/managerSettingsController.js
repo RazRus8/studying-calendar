@@ -2,7 +2,7 @@
 {
     "use strict";
 
-    app.controller("managerSettingsController", function(navbarService, userService, managerSettingsService)
+    app.controller("managerSettingsController", function($route, navbarService, userService, passwordService)
     {
         console.log("manager settings page controller is working");
 
@@ -24,20 +24,12 @@
 
         this.changePassword = function()
         {
-            var oldpass1 = document.getElementById("old-pass-1");
-            var oldpass2 = document.getElementById("old-pass-2");
-            var newpass = document.getElementById("new-pass");
-
-            //console.log(this.oldPassword1, this.oldPassword2, this.newPassword);
+            var oldpass1 = document.getElementById("manager-old-pass-1");
+            var oldpass2 = document.getElementById("manager-old-pass-2");
+            var newpass = document.getElementById("manager-new-pass");
 
             if (this.oldPassword1 !== undefined && this.oldPassword2 !== undefined && this.newPassword)
             {
-                var oldUser =
-                {
-                    Id: parseInt(userService.getUser()),
-                    Password: this.oldPassword1
-                }
-
                 if (whiteSpaceCheck(this.oldPassword1))
                 {
                     oldpass1.setCustomValidity(messages[2]);
@@ -53,22 +45,34 @@
                 
                 if (this.oldPassword1 == this.oldPassword2)
                 {
-                    var user =
+                    if (this.oldPassword1 != this.newPassword)
                     {
-                        Id: parseInt(userService.getUser()),
-                        OldPassword: this.oldPassword1,
-                        NewPassword: this.newPassword
-                    }
-
-                    var promiseObj = managerSettingsService.changePassword(user);
-
-                    promiseObj.then(function(value)
-                    {
-                        if (value.status != 200)
+                        var user =
                         {
-                            alert("Wrong old password");
+                            Id: parseInt(userService.getUser().Id),
+                            OldPassword: this.oldPassword1,
+                            NewPassword: this.newPassword
                         }
-                    });
+
+                        var promiseObj = passwordService.changePassword(user);
+    
+                        promiseObj.then(function(value)
+                        {
+                            if (value.status != 200)
+                            {
+                                alert("Incorrect old password.");
+                            }
+                            else
+                            {
+                                $route.reload();
+                                alert("Password successfully changed.");
+                            }
+                        });
+                    }
+                    else
+                    {
+                        newpass.setCustomValidity(messages[3]);
+                    }
                 }
                 else
                 {
@@ -89,9 +93,9 @@
 
         var messages =
         {
-            0 : "Incorrect old password",
-            1 : "Second password does not match the first password.",
-            2 : "Password may contain letters, digits, special sybols and no whitespace."
+            1 : "Second password does not match the first one.",
+            2 : "Password may contain letters, digits, special sybols and no whitespace.",
+            3 : "New password cannot be the same as the old one."
         }
     });
 }());
