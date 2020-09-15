@@ -13,19 +13,17 @@
         <link rel="stylesheet" href="/data/style/calendar.css">
     </head>
     <body>
-        <header id="navbar" class="navbar navbar-expand flex-column flex-md-row" ng-controller="navbarController as nbCtrl">
-            <div class="ml-2">
-                <h3>Studying schedule</h3>
+        <header id="navbar" class="navbar" ng-controller="navbarController as nbCtrl">
+            <div id="main-title">
+                <h3>Studying calendar</h3>
             </div>
-            <div id="tabs" class="navbar-nav ml-md-auto mr-md-auto" ng-include="nbCtrl.navbarService.tabs">
-                <!-- tabs -->
+            <div id="tabs" ng-include="nbCtrl.navbarService.tabs"></div>
+            <div id="panel">
+                <div id="time">
+                    <span ng-bind="nbCtrl.currentDateTime"></span>
+                </div>
+                <div id="icon" ng-include="nbCtrl.navbarService.icons"></div>
             </div>
-            <div ng-class="nbCtrl.navbarService.dateTimeClass">
-                <span ng-bind="nbCtrl.currentDateTime"></span>
-            </div>
-            <ul id="icons" class="navbar-nav" ng-include="nbCtrl.navbarService.icons">
-                <!-- icons -->
-            </ul>
         </header>
         <section class="mt-5 mb-5" ng-view>
             <!-- A place of changing -->

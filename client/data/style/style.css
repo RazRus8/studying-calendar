@@ -8,15 +8,49 @@
     height: 3.5em;
 }
 
-/* set padding for tabs and icons */
-.nav-link
+/* Positioning of navbar elements */
+
+#time
 {
-    padding: 0.25em 1em;
+    display: inline-block;
+    margin-right: 1em;
+}
+
+#icon
+{
+    display: inline-block;
+    margin-right: 1em;
+}
+
+#main-title
+{
+    position: absolute;
+    margin-left: 1em;
+}
+
+#panel
+{
+    position: absolute;
+    right: 0;
 }
 
 #tabs
 {
+    width:100%;
+    display: flex;
+    justify-content: center;
     height: 100%;
+}
+
+#tabs>ul>li
+{
+    padding: 0 8px 8px;
+}
+
+/* set padding for tabs and icons */
+.nav-link
+{
+    padding: 0.25em 1em;
 }
 
 /* white line on tabs */
@@ -108,3 +142,4 @@ li>#del
     float: right;
     margin-top: 4px;
 }
+
