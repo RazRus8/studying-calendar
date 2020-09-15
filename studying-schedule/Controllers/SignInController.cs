@@ -4,6 +4,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using studying_schedule.Database.SELECT;
 using studying_schedule.Models;
+using studying_schedule.Models.Info;
 
 namespace studying_schedule.Controllers
 {
@@ -17,7 +18,7 @@ namespace studying_schedule.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserModel model = SelectPassword.ValidateUser(user);
+                var model = SelectPassword.ValidateUser(user);
                 
                 if (model != null)
                 {
