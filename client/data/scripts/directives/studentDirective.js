@@ -6,33 +6,39 @@
     {
         function getSchedule(param)
         {
+            var daysInfo = {};
             var month = param.monthIndex + 1;
             var user = 
             {
-                UserId: parseInt(userService.getUser()),
+                UserId: parseInt(userService.getUser().Id),
                 Month: month,
                 Year: param.year
             }
 
-            var promiseObj = studentHomeService.getSchedule(user);
+            var promiseObj = studentHomeService.getScheduleFor(user);
 
             promiseObj.then(function(value)
             {
-                console.log(value);
-
                 if (value.data[0] !== undefined)
                 {
                     for (var item of value.data)
                     {
-                        var startDate = new Date(item.LectureDateTimeStart);
-                        var endDate = new Date(item.LectureDateTimeEnd);
-                        var elem = angular.element(document.getElementById(startDate.getDate()));
+                        var date = new Date(item.LectureDateTimeStart);
+
+                        if (daysInfo[date.getDate()] === undefined)
+                        {
+                            daysInfo[date.getDate()] = [];
+                        }
+
+                        var elem = angular.element(document.getElementById(date.getDate()));
                         elem.removeClass("disabled-date").addClass("active-date");
-                        
-                        elem.attr("data-tooltip", `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nTeacher: ${item.TeacherFullName}\nLecture start time: ${startDate.getHours()}:${startDate.getMinutes()}\nLecture end time: ${endDate.getHours()}:${endDate.getMinutes()}`);
+                        elem.attr("data-info", "true");
+                        daysInfo[date.getDate()].push(item);
                     }
                 }
             });
+
+            return daysInfo;
         }
 
         return {
@@ -52,7 +58,8 @@
                 studentHomeService.setHeight();
 
                 // load schedule from server
-                getSchedule(scope.monthYear);
+                var daysInfo = getSchedule(scope.monthYear);
+                var dayInfo = [];
 
                 function setDaysMonth(date)
                 {
@@ -92,6 +99,61 @@
                         daysMonthsYears = {};
                         scope.$apply(() => scope.next());
                     }
+                });
+
+                element.on("mouseenter", `[data-info="true"]`, function(event)
+                {
+                    var elem = angular.element(event.target);
+                    
+                    // works only for active date buttons
+                    if (elem.attr("id") !== undefined && elem[0].className == "active-date")
+                    {
+                        angular.element(document.getElementsByClassName("info")).remove();
+                        dayInfo = daysInfo[elem.attr("id")];
+                        var counter = dayInfo.length;
+
+                        elem.append(`<div class="info"></div>`);
+
+                        for (var item of dayInfo)
+                        {
+                            var id = item.Id;
+                            var dts = new Date(item.LectureDateTimeStart);
+                            var dte = new Date(item.LectureDateTimeEnd);
+                            var startHour = dts.getHours();
+                            var startMinutes = (dts.getMinutes() < 10 ? "0" : "") + dts.getMinutes();
+                            var endHour = dte.getHours();
+                            var endMinutes = (dte.getMinutes() < 10 ? "0" : "") + dte.getMinutes();
+                            --counter;
+                            
+                            if ((startHour != 0 && endHour != 0) || (startHour == 0 && endHour != 0) || (startHour != 0 && endHour == 0))
+                            {
+                                var info = `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nTeacher: ${item.TeacherFullName}\nLecture start time: ${startHour}:${startMinutes}\nLecture end time: ${endHour}:${endMinutes}`;
+                            }
+                            else
+                            {
+                                var info = `Group: ${item.StudentsGroupName}\nLecture: ${item.LectureName}\nTeacher: ${item.TeacherFullName}`;
+                            }
+                            
+                            if (counter > 0)
+                            {
+                                elem.children().append(`<div data-id="${id}" class="info-block" style="margin-bottom: 4%;"><div class="info-text">${info}</div></div>`);
+                            }
+                            else
+                            {
+                                elem.children().append(`<div data-id="${id}" class="info-block"><div class="info-text">${info}</div></div>`);
+                            }
+                        }
+                    }
+                });
+
+                element.on("mouseenter", `[data-info="false"]`, function()
+                {
+                    angular.element(document.getElementsByClassName("info")).remove();
+                });
+
+                element.on("mouseleave", function()
+                {
+                    angular.element(document.getElementsByClassName("info")).remove();
                 });
             }
         };
