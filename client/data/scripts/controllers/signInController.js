@@ -26,8 +26,6 @@
                     Password: this.password
                 }
                 
-                console.log(user);
-                
                 var promiseObj = signInService.signIn(user);
     
                 // for reading status of promise
@@ -38,19 +36,19 @@
                     if (value.status == 200 && value.data.Role == 1)
                     {
                         console.log("User role: student.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
-                        userService.setUser(value.data.Id);
+                        userService.setUser(value.data);
                         $location.url("/home/student/" + value.data.Id);
                     }
                     else if (value.status == 200 && value.data.Role == 2)
                     {
                         console.log("User role: teacher.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
-                        userService.setUser(value.data.Id);
+                        userService.setUser(value.data);
                         $location.url("/home/teacher/" + value.data.Id);
                     }
                     else if (value.status == 200 && value.data.Role == 3)
                     {
                         console.log("User role: manager.", "User:", value.data.FirstName, value.data.LastName, "User id:", value.data.Id);
-                        userService.setUser(value.data.Id);
+                        userService.setUser(value.data);
                         $location.url("/home/manager");
                     }
                     else if (value.status != 200)
