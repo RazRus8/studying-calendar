@@ -9,7 +9,7 @@ namespace studying_schedule.Database
 {
     public class AppContext : DbContext
     {
-        private readonly string connectionString = @"server=localhost;database=studying_schedule_db;trusted_connection=true;";
+        private readonly string connectionString = @"server=localhost;database=studying_calendar_db;trusted_connection=true;";
 
         public DbSet<UserModel> UsersSet { get; set; } // users table
         public DbSet<StudentsGroupsModel> StudentsGroupsSet { get; set; } // students_groups table
