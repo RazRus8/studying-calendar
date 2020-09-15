@@ -2,7 +2,7 @@
 {
     "use strict";
 
-    app.service("managerSettingsService", function($q, $http)
+    app.service("passwordService", function($q, $http)
     {
         this.changePassword = function(user)
         {
