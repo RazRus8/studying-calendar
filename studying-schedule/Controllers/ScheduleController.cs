@@ -61,9 +61,33 @@ namespace studying_schedule.Controllers
             }
         }
 
-        [Route("api/getschedulefor")]
+        [Route("api/getscheduleforstudent")]
         [HttpPost]
-        public ContentResult GetScheduleFor(UserInfo user)
+        public ContentResult GetScheduleForStudent(UserInfo user)
+        {
+            if (ModelState.IsValid)
+            {
+                var fullSchedule = SelectSchedule.SelectForUser(user);
+
+                return new ContentResult
+                {
+                    Content = JsonSerializer.Serialize(fullSchedule),
+                    ContentType = "application/json",
+                    StatusCode = (int)HttpStatusCode.OK
+                };
+            }
+            else
+            {
+                return new ContentResult
+                {
+                    StatusCode = (int)HttpStatusCode.InternalServerError
+                };
+            }
+        }
+
+        [Route("api/getscheduleforteacher")]
+        [HttpPost]
+        public ContentResult GetScheduleForTeacher(UserInfo user)
         {
             if (ModelState.IsValid)
             {
