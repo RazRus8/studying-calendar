@@ -1,22 +1,20 @@
-<div class="card mx-auto mt-2" style="width: 400px;" ng-controller="studentSettingsController as studCtrl">
-    <form class="card-body">
-        <div class="card-title text-center mb-3">
-            <span id="title">
-                Reset your password
-            </span>
+<div class="container" style="width: 350px;" ng-controller="studentSettingsController as studCtrl">
+    <form>
+        <div>
+            <h4>Change password</h4>
+        </div>
+        <div class="form-group mt-3">
+            <label>Enter old password</label>
+            <input id="stud-old-pass-1" type="password" class="form-control" ng-model="studCtrl.oldPassword1" required>
         </div>
         <div class="form-group">
-            <label>Enter your old password</label>
-            <input type="password" class="form-control">
+            <label>Enter old password once again</label>
+            <input id="stud-old-pass-2" type="password" class="form-control" ng-model="studCtrl.oldPassword2" required>
         </div>
         <div class="form-group">
-            <label>Enter your old password once again</label>
-            <input type="password" class="form-control">
+            <label>Enter new password</label>
+            <input id="stud-new-pass" type="password" class="form-control" ng-model="studCtrl.newPassword" required>
         </div>
-        <div class="form-group">
-            <label>Enter your new password</label>
-            <input type="password" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary mt-2">Change password</button>
+        <button type="submit" class="btn btn-primary" ng-click="studCtrl.changePassword()">Change password</button>
     </form>
 </div>
