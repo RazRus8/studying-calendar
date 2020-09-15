@@ -82,14 +82,14 @@
         }
 
         // get schedule for specific student
-        this.getScheduleFor = function(user)
+        this.getScheduleForStudent = function(user)
         {
             var deferred = $q.defer();
 
             $http({
                 method: "POST",
                 data: user,
-                url: "http://localhost:50157/api/getschedulefor"
+                url: "http://localhost:50157/api/getscheduleforstudent"
             })
             .then(function success(response)
             {
