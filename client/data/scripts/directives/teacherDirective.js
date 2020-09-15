@@ -15,7 +15,7 @@
                 Year: param.year
             }
 
-            var promiseObj = teacherHomeService.getScheduleFor(user);
+            var promiseObj = teacherHomeService.getScheduleForTeacher(user);
 
             promiseObj.then(function(value)
             {
