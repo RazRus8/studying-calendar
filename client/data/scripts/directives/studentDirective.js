@@ -19,7 +19,7 @@
 
             promiseObj.then(function(value)
             {
-                if (value.data[0] !== undefined)
+                if (value.data != null && value.data[0] !== undefined)
                 {
                     for (var item of value.data)
                     {
