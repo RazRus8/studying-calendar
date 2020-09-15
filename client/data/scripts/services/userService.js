@@ -4,19 +4,17 @@
 
     app.service("userService", function()
     {
-        var user;
-
-        this.setUser = function(newUser)
+        // stringify object and store it to the local storage
+        this.setUser = function(user)
         {
-            user = newUser;
             localStorage.removeItem("user");
-            localStorage.setItem("user", user);
+            localStorage.setItem("user", JSON.stringify(user));
         }
-
+        
+        // parse string to the object and get it
         this.getUser = function()
         {
-            user = localStorage.getItem("user");
-            return user;
+            return JSON.parse(localStorage.getItem("user"));
         }
     });
 }());
