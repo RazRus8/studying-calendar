@@ -18,5 +18,8 @@
         // set active tab
         navbarService.setTab1("tab1-active");
         navbarService.setTab2("tab2");
+
+        // user info for greeting
+        this.userInfo = userService.getUser();
     });
 }());
