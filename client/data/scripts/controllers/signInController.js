@@ -13,9 +13,6 @@
         // disable tabs in navbar
         navbarService.setTabs("");
 
-        // set class for position of datetime in navbar
-        navbarService.setClass("mr-3 ml-auto");
-
         this.signIn = function()
         {
             if (this.email !== undefined && this.password !== undefined)

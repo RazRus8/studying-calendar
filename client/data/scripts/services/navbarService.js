@@ -7,7 +7,6 @@
     {
         var icons;
         var tabs;
-        var dateTimeClass;
         var tab1;
         var tab2;
         var tab3;
@@ -26,13 +25,6 @@
         {
             this.tabs = url;
             return tabs;
-        }
-
-        // set class for position of datetime in navbar
-        this.setClass = function(classVal)
-        {
-            this.dateTimeClass = classVal;
-            return dateTimeClass;
         }
 
         // set id for activation tab #1

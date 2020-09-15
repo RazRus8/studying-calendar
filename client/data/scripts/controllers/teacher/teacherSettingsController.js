@@ -12,9 +12,6 @@
         // disable tabs in navbar
         navbarService.setTabs("/data/views/tabs/teacherTabs.html");
 
-        // set class for position of datetime in navbar
-        navbarService.setClass("mr-3");
-
         // set active tab
         navbarService.setTab1("tab1");
         navbarService.setTab2("tab2-active");

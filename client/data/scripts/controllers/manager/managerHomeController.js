@@ -12,9 +12,6 @@
         // disable tabs in navbar
         navbarService.setTabs("/data/views/tabs/managerTabs.html");
 
-        // set class for position of datetime in navbar
-        navbarService.setClass("mr-3");
-
         // set select for hours and minutes
         this.startTime = managerSelectService.setTime();
         this.endTime = managerSelectService.setTime();
