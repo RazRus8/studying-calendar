@@ -1,24 +1,33 @@
 ﻿using System;
 using System.Linq;
 using studying_schedule.Models;
+using studying_schedule.Models.Info;
 using studying_schedule.Models.UserInterface;
 
 namespace studying_schedule.Database.SELECT
 {
     public class SelectPassword
     {
-        public static UserModel ValidateUser(UserModel user)
+        public static SafeUserModel ValidateUser(UserModel user)
         {
             // to do: make method async
             try
             {
                 using (AppContext db = new AppContext())
                 {
-                    var client = db.UsersSet.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password);
+                    var acceptUser = db.UsersSet.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password);
 
-                    if (client != null)
+                    if (acceptUser != null)
                     {
-                        return SetModel(client);
+                        var safeUser = new SafeUserModel
+                        {
+                            Id = acceptUser.Id,
+                            Role = acceptUser.Role,
+                            FirstName = acceptUser.FirstName,
+                            LastName = acceptUser.LastName
+                        };
+
+                        return safeUser;
                     }
                     else
                     {
@@ -32,17 +41,6 @@ namespace studying_schedule.Database.SELECT
             }
 
             throw new NotImplementedException();
-        }
-
-        private static UserModel SetModel(IUser user)
-        {
-            return new UserModel
-            {
-                Id = user.Id,
-                Role = user.Role,
-                FirstName = user.FirstName,
-                LastName = user.LastName
-            };
         }
     }
 }
