@@ -191,7 +191,7 @@
                             
                             if (counter > 0)
                             {
-                                elem.children().append(`<div data-id="${id}" class="info-block" style="margin-bottom: 4%;"><div class="info-text">${info}</div>${svg}</div>`);
+                                elem.children().append(`<div data-id="${id}" class="info-block" style="margin-bottom: 10%;"><div class="info-text">${info}</div>${svg}</div>`);
                             }
                             else
                             {
