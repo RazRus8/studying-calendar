@@ -15,17 +15,17 @@ namespace studying_schedule.Database.SELECT
                 using (AppContext db = new AppContext())
                 {
                     var studentsInGroups = db.StudentsGroupsSet.Select(student => student.StudentId).ToList();
-                    var students = db.UsersSet.Where(student => !studentsInGroups.Any(s => s == student.Id)).Where(st => st.Role == 1).ToList();
-                    var safestud = students.Select(student => new SafeUserModel
-                    {
-                        Id = student.Id,
-                        Role = student.Role,
-                        FirstName = student.FirstName,
-                        LastName = student.LastName
-                    }).ToList();
+                    var students = db.UsersSet.Where(student => studentsInGroups.All(s => s != student.Id) && student.Role == 1)
+                                              .Select(u => new SafeUserModel
+                                              {
+                                                  Id = u.Id,
+                                                  Role = u.Role,
+                                                  FirstName = u.FirstName,
+                                                  LastName = u.LastName
+                                              }).ToList();
 
                     // returns students that have no group
-                    return safestud;
+                    return students;
                 }
             }
             catch (Exception ex)
