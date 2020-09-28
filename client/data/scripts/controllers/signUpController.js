@@ -28,7 +28,7 @@
             {
                 if (whiteSpaceCheck(this.password))
                 {
-                    pass.setCustomValidity("Password may contain letters, digits, special sybols and no whitespace.");
+                    pass.setCustomValidity("Password may contain letters, digits, special symbols and no whitespace.");
                 }
                 else
                 {

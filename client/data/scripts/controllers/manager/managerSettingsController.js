@@ -91,7 +91,7 @@
         var messages =
         {
             1 : "Second password does not match the first one.",
-            2 : "Password may contain letters, digits, special sybols and no whitespace.",
+            2 : "Password may contain letters, digits, special symbols and no whitespace.",
             3 : "New password cannot be the same as the old one."
         }
     });
