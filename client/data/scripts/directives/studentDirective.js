@@ -136,7 +136,7 @@
                             
                             if (counter > 0)
                             {
-                                elem.children().append(`<div data-id="${id}" class="info-block" style="margin-bottom: 6%;"><div class="info-text">${info}</div></div>`);
+                                elem.children().append(`<div data-id="${id}" class="info-block" style="margin-bottom: 25px;"><div class="info-text">${info}</div></div>`);
                             }
                             else
                             {
