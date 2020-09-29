@@ -1,4 +1,4 @@
-# ASP.NET Core Application - Interactive studying calendar
+# Web Application - Interactive studying calendar
 # <sub>The following technologies are used in this application:<sub>
 1. ASP.NET Core v3.1
 2. Entity Framework Core
